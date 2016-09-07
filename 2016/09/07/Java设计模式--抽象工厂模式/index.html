@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java设计模式--装饰模式 | 起今知行 | 跨越者</title>
+  <title>Java设计模式--抽象工厂模式 | 起今知行 | 跨越者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="装饰模式(别名：包装类)动态地给对象添加一些额外的职责。就功能来说装饰模式相比生成子类更为灵活。
-Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an object dynamically。Decorators provide a flexible alternative to subcla">
+  <meta name="description" content="抽象工厂模式(别名：配套)提供一个创建一系列或相互依赖对象的接口，而无需指定它们具体的类。
+Abstract Factory Pattern(Another Name: Kit)Provide an interface for creating an families of related or dependent objects without specifying their concrete">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java设计模式--装饰模式">
+<meta property="og:title" content="Java设计模式--抽象工厂模式">
 <meta property="og:url" content="http://yoursite.com/2016/09/07/Java设计模式--抽象工厂模式/index.html">
 <meta property="og:site_name" content="起今知行 | 跨越者">
-<meta property="og:description" content="装饰模式(别名：包装类)动态地给对象添加一些额外的职责。就功能来说装饰模式相比生成子类更为灵活。
-Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an object dynamically。Decorators provide a flexible alternative to subcla">
-<meta property="og:image" content="http://www.z4a.net/images/2016/09/07/1eda8c.png">
-<meta property="og:updated_time" content="2016-09-07T11:19:21.067Z">
+<meta property="og:description" content="抽象工厂模式(别名：配套)提供一个创建一系列或相互依赖对象的接口，而无需指定它们具体的类。
+Abstract Factory Pattern(Another Name: Kit)Provide an interface for creating an families of related or dependent objects without specifying their concrete">
+<meta property="og:image" content="http://www.z4a.net/images/2016/09/07/1c4ffa.png">
+<meta property="og:updated_time" content="2016-09-07T16:26:02.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java设计模式--装饰模式">
-<meta name="twitter:description" content="装饰模式(别名：包装类)动态地给对象添加一些额外的职责。就功能来说装饰模式相比生成子类更为灵活。
-Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an object dynamically。Decorators provide a flexible alternative to subcla">
-<meta name="twitter:image" content="http://www.z4a.net/images/2016/09/07/1eda8c.png">
+<meta name="twitter:title" content="Java设计模式--抽象工厂模式">
+<meta name="twitter:description" content="抽象工厂模式(别名：配套)提供一个创建一系列或相互依赖对象的接口，而无需指定它们具体的类。
+Abstract Factory Pattern(Another Name: Kit)Provide an interface for creating an families of related or dependent objects without specifying their concrete">
+<meta name="twitter:image" content="http://www.z4a.net/images/2016/09/07/1c4ffa.png">
   
     <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
   
@@ -224,7 +224,7 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
         
   
     <h1 class="article-title" itemprop="name">
-      Java设计模式--装饰模式
+      Java设计模式--抽象工厂模式
     </h1>
   
 
@@ -235,7 +235,7 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/装饰模式/">装饰模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/抽象工厂模式/">抽象工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -245,9 +245,9 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="装饰模式-别名：包装类"><a href="#装饰模式-别名：包装类" class="headerlink" title="装饰模式(别名：包装类)"></a>装饰模式(别名：包装类)</h1><p>动态地给对象添加一些额外的职责。就功能来说装饰模式相比生成子类更为灵活。</p>
-<h1 id="Decorator-Pattern-Another-Name-Wrapper"><a href="#Decorator-Pattern-Another-Name-Wrapper" class="headerlink" title="Decorator Pattern(Another Name: Wrapper)"></a>Decorator Pattern(Another Name: Wrapper)</h1><p>Attach additional responsibilities to an object dynamically。Decorators provide a flexible alternative to subclassing for extending functionality.</p>
-<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://www.z4a.net/images/2016/09/07/1eda8c.png" alt=""></p>
+        <h1 id="抽象工厂模式-别名：配套"><a href="#抽象工厂模式-别名：配套" class="headerlink" title="抽象工厂模式(别名：配套)"></a>抽象工厂模式(别名：配套)</h1><p>提供一个创建一系列或相互依赖对象的接口，而无需指定它们具体的类。</p>
+<h1 id="Abstract-Factory-Pattern-Another-Name-Kit"><a href="#Abstract-Factory-Pattern-Another-Name-Kit" class="headerlink" title="Abstract Factory Pattern(Another Name: Kit)"></a>Abstract Factory Pattern(Another Name: Kit)</h1><p>Provide an interface for creating an families of related or dependent objects without specifying their concrete classes。</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://www.z4a.net/images/2016/09/07/1c4ffa.png" alt=""></p>
 <h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>工厂方法模式的结构中包括四个角色。</p>
 <ul>
 <li>抽象产品（Product）：抽象类或接口，负责定义具体产品必须实现的方法。</li>
@@ -283,12 +283,12 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--装饰模式</a></p>
+        <p><span>本文标题:</span><a href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
         <p><span>发布时间:</span>2016年09月07日 - 14时43分</p>
-        <p><span>最后更新:</span>2016年09月07日 - 19时19分</p>
+        <p><span>最后更新:</span>2016年09月08日 - 00时26分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/07/Java设计模式--抽象工厂模式/" title="Java设计模式--装饰模式">http://yoursite.com/2016/09/07/Java设计模式--抽象工厂模式/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/07/Java设计模式--抽象工厂模式/" title="Java设计模式--抽象工厂模式">http://yoursite.com/2016/09/07/Java设计模式--抽象工厂模式/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/07/Java设计模式--抽象工厂模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -302,10 +302,16 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/09/08/Java设计模式--装饰模式/">
+                    Java设计模式--装饰模式
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/09/07/Java设计模式--装饰模式/">
-                    Java设计模式--抽象工厂模式
+                <a href="/2016/09/06/Java设计模式--工厂模式/">
+                    Java设计模式--工厂模式
                 </a>
             </div>
         
@@ -316,7 +322,7 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰模式-别名：包装类"><span class="toc-number">1.</span> <span class="toc-text">装饰模式(别名：包装类)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Decorator-Pattern-Another-Name-Wrapper"><span class="toc-number">2.</span> <span class="toc-text">Decorator Pattern(Another Name: Wrapper)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Product的接口类Firearms-java"><span class="toc-number">5.1.</span> <span class="toc-text">Product的接口类Firearms.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类Pistol-java"><span class="toc-number">5.2.</span> <span class="toc-text">ConcreteProduct的实现类Pistol.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类MachineGun-java"><span class="toc-number">5.3.</span> <span class="toc-text">ConcreteProduct的实现类MachineGun.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Product的接口类Bullet-java"><span class="toc-number">5.4.</span> <span class="toc-text">Product的接口类Bullet.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类PistolBullet-java"><span class="toc-number">5.5.</span> <span class="toc-text">ConcreteProduct的实现类PistolBullet.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类MachineGunBullet-java"><span class="toc-number">5.6.</span> <span class="toc-text">ConcreteProduct的实现类MachineGunBullet.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creator的接口类Armory-java"><span class="toc-number">5.7.</span> <span class="toc-text">Creator的接口类Armory.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteCreator的实现类PistolFactory-java"><span class="toc-number">5.8.</span> <span class="toc-text">ConcreteCreator的实现类PistolFactory.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteCreator的实现类MachineGunFactory-java"><span class="toc-number">5.9.</span> <span class="toc-text">ConcreteCreator的实现类MachineGunFactory.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Kit-java"><span class="toc-number">5.10.</span> <span class="toc-text">测试类Kit.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象工厂模式的优点"><span class="toc-number">6.</span> <span class="toc-text">抽象工厂模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用抽象工厂模式的情景"><span class="toc-number">7.</span> <span class="toc-text">适用抽象工厂模式的情景</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象工厂模式-别名：配套"><span class="toc-number">1.</span> <span class="toc-text">抽象工厂模式(别名：配套)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Abstract-Factory-Pattern-Another-Name-Kit"><span class="toc-number">2.</span> <span class="toc-text">Abstract Factory Pattern(Another Name: Kit)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Product的接口类Firearms-java"><span class="toc-number">5.1.</span> <span class="toc-text">Product的接口类Firearms.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类Pistol-java"><span class="toc-number">5.2.</span> <span class="toc-text">ConcreteProduct的实现类Pistol.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类MachineGun-java"><span class="toc-number">5.3.</span> <span class="toc-text">ConcreteProduct的实现类MachineGun.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Product的接口类Bullet-java"><span class="toc-number">5.4.</span> <span class="toc-text">Product的接口类Bullet.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类PistolBullet-java"><span class="toc-number">5.5.</span> <span class="toc-text">ConcreteProduct的实现类PistolBullet.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类MachineGunBullet-java"><span class="toc-number">5.6.</span> <span class="toc-text">ConcreteProduct的实现类MachineGunBullet.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creator的接口类Armory-java"><span class="toc-number">5.7.</span> <span class="toc-text">Creator的接口类Armory.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteCreator的实现类PistolFactory-java"><span class="toc-number">5.8.</span> <span class="toc-text">ConcreteCreator的实现类PistolFactory.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteCreator的实现类MachineGunFactory-java"><span class="toc-number">5.9.</span> <span class="toc-text">ConcreteCreator的实现类MachineGunFactory.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Kit-java"><span class="toc-number">5.10.</span> <span class="toc-text">测试类Kit.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象工厂模式的优点"><span class="toc-number">6.</span> <span class="toc-text">抽象工厂模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用抽象工厂模式的情景"><span class="toc-number">7.</span> <span class="toc-text">适用抽象工厂模式的情景</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -384,19 +390,21 @@ Decorator Pattern(Another Name: Wrapper)Attach additional responsibilities to an
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/09/08/Java设计模式--装饰模式/" title="上一篇: Java设计模式--装饰模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/09/07/Java设计模式--装饰模式/" title="下一篇: Java设计模式--抽象工厂模式">
+            <a href="/2016/09/06/Java设计模式--工厂模式/" title="下一篇: Java设计模式--工厂模式">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--装饰模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
