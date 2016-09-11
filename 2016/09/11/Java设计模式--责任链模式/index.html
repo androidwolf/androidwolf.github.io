@@ -14,7 +14,7 @@ Chain of Responsibility PatternA void coupling the sender of a request to its re
 <meta property="og:description" content="责任链模式使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
 Chain of Responsibility PatternA void coupling the sender of a request to its receiver by giving more than one object">
 <meta property="og:image" content="http://i1.piimg.com/4851/46acb4ac8f093e1a.png">
-<meta property="og:updated_time" content="2016-09-11T03:11:16.134Z">
+<meta property="og:updated_time" content="2016-09-11T03:18:55.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式--责任链模式">
 <meta name="twitter:description" content="责任链模式使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
@@ -264,7 +264,7 @@ Chain of Responsibility PatternA void coupling the sender of a request to its re
 <li>应用程序可以动态地改变处理者之间的先后顺序。</li>
 <li>使用责任链的用户不必知道处理者的信息，用户不会知道到底是哪个对象处理了它的请求。</li>
 </ul>
-<h1 id="试用责任链模式的情景"><a href="#试用责任链模式的情景" class="headerlink" title="试用责任链模式的情景"></a>试用责任链模式的情景</h1><ul>
+<h1 id="适用责任链模式的情景"><a href="#适用责任链模式的情景" class="headerlink" title="适用责任链模式的情景"></a>适用责任链模式的情景</h1><ul>
 <li>有许多对象可以处理用户的请求，希望程序在运行期间自动确定处理用户的那个对象。</li>
 <li>希望用户不必明确指定接受者的情况下，向多个接受者的一个提交请求。</li>
 <li>程序希望动态制定可处理用户请求的对象集合。</li>
@@ -280,7 +280,7 @@ Chain of Responsibility PatternA void coupling the sender of a request to its re
         <p><span>本文标题:</span><a href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
         <p><span>发布时间:</span>2016年09月11日 - 10时19分</p>
-        <p><span>最后更新:</span>2016年09月11日 - 11时11分</p>
+        <p><span>最后更新:</span>2016年09月11日 - 11时18分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/09/11/Java设计模式--责任链模式/" title="Java设计模式--责任链模式">http://yoursite.com/2016/09/11/Java设计模式--责任链模式/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/11/Java设计模式--责任链模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -310,7 +310,7 @@ Chain of Responsibility PatternA void coupling the sender of a request to its re
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#责任链模式"><span class="toc-number">1.</span> <span class="toc-text">责任链模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chain-of-Responsibility-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Chain of Responsibility Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler的抽象类Handler-java"><span class="toc-number">5.1.</span> <span class="toc-text">Handler的抽象类Handler.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteHandler的实现类Beijing-java"><span class="toc-number">5.2.</span> <span class="toc-text">ConcreteHandler的实现类Beijing.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteHandler的实现类Shanghai-java"><span class="toc-number">5.3.</span> <span class="toc-text">ConcreteHandler的实现类Shanghai.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.4.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#责任链模式的优点"><span class="toc-number">6.</span> <span class="toc-text">责任链模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#试用责任链模式的情景"><span class="toc-number">7.</span> <span class="toc-text">试用责任链模式的情景</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#责任链模式"><span class="toc-number">1.</span> <span class="toc-text">责任链模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chain-of-Responsibility-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Chain of Responsibility Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler的抽象类Handler-java"><span class="toc-number">5.1.</span> <span class="toc-text">Handler的抽象类Handler.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteHandler的实现类Beijing-java"><span class="toc-number">5.2.</span> <span class="toc-text">ConcreteHandler的实现类Beijing.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteHandler的实现类Shanghai-java"><span class="toc-number">5.3.</span> <span class="toc-text">ConcreteHandler的实现类Shanghai.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.4.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#责任链模式的优点"><span class="toc-number">6.</span> <span class="toc-text">责任链模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用责任链模式的情景"><span class="toc-number">7.</span> <span class="toc-text">适用责任链模式的情景</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
