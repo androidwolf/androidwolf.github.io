@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
                     </div>
                 </section>
                 
@@ -206,6 +206,103 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Java设计模式--责任链模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/11/Java设计模式--责任链模式/" class="article-date">
+      <time datetime="2016-09-11T02:19:06.000Z" itemprop="datePublished">2016-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h1><p>使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+<h1 id="Chain-of-Responsibility-Pattern"><a href="#Chain-of-Responsibility-Pattern" class="headerlink" title="Chain of Responsibility Pattern"></a>Chain of Responsibility Pattern</h1><p>A void coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i1.piimg.com/4851/46acb4ac8f093e1a.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>责任链模式的结构中包括两种角色。</p>
+<ul>
+<li>处理者（Handler）：处理者是一个接口，负责规定具体处理者处理用户请求的方法以及具体处理者设置后继对象的方法。</li>
+<li>具体处理者（Concrete Handler）：具体处理者是实现处理者的类的实例。具体处理者通过调用处理者接口规定的方法处理用户的请求，即在接到用户的请求后，处理者将调用接口规定的方法，在执行该方法的过程中，如果发现能处理用户的请求，就处理有关数据，否则就反馈无法处理的信息给用户，然后将用户的请求传递给自己的后继对象。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Handler的抽象类Handler-java"><a href="#Handler的抽象类Handler-java" class="headerlink" title="Handler的抽象类Handler.java"></a>Handler的抽象类Handler.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String number)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteHandler的实现类Beijing-java"><a href="#ConcreteHandler的实现类Beijing-java" class="headerlink" title="ConcreteHandler的实现类Beijing.java"></a>ConcreteHandler的实现类Beijing.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Beijing</span> <span class="keyword">implements</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Handler handler;</div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; numberList;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Beijing</span><span class="params">()</span> </span>&#123;</div><div class="line">		numberList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">		numberList.add(<span class="string">"11029812340930034"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930033"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930032"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930031"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930030"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String number)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (numberList.contains(number)) &#123;</div><div class="line">			System.out.println(<span class="string">"该人在北京住"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(<span class="string">"该人不在北京住"</span>);</div><div class="line">			<span class="keyword">if</span> (handler!=<span class="keyword">null</span>) &#123;</div><div class="line">				handler.handleRequest(number);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.handler = handler;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteHandler的实现类Shanghai-java"><a href="#ConcreteHandler的实现类Shanghai-java" class="headerlink" title="ConcreteHandler的实现类Shanghai.java"></a>ConcreteHandler的实现类Shanghai.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Shanghai</span> <span class="keyword">implements</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Handler handler;</div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; numberList;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Shanghai</span><span class="params">()</span> </span>&#123;</div><div class="line">		numberList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">		numberList.add(<span class="string">"12029812340930034"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930033"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930032"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930031"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930030"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String number)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (numberList.contains(number)) &#123;</div><div class="line">			System.out.println(<span class="string">"该人住在上海"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(<span class="string">"该人不住在上海"</span>);</div><div class="line">			<span class="keyword">if</span> (handler!=<span class="keyword">null</span>) &#123;</div><div class="line">				handler.handleRequest(number);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.handler = handler;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Handler beijing,shanghai;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createChain</span><span class="params">()</span> </span>&#123;</div><div class="line">		beijing = <span class="keyword">new</span> Beijing();</div><div class="line">		shanghai = <span class="keyword">new</span> Shanghai();</div><div class="line">		beijing.setHandler(shanghai);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reponseClient</span><span class="params">(String number)</span> </span>&#123;</div><div class="line">		beijing.handleRequest(number);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Application application = <span class="keyword">new</span> Application();</div><div class="line">		application.createChain();</div><div class="line">		application.reponseClient(<span class="string">"12029812340930034"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="责任链模式的优点"><a href="#责任链模式的优点" class="headerlink" title="责任链模式的优点"></a>责任链模式的优点</h1><ul>
+<li>责任链中的对象只和自己的后继是低耦合关系，和其他对象毫无关联，这使得编写处理者对象以及创建责任链变得非常容易。</li>
+<li>当在处理者中分配职责时，责任链给应用程序更多的灵活性。</li>
+<li>应用程序可以动态地增加、删除处理者或重新指派处理者的职责。</li>
+<li>应用程序可以动态地改变处理者之间的先后顺序。</li>
+<li>使用责任链的用户不必知道处理者的信息，用户不会知道到底是哪个对象处理了它的请求。</li>
+</ul>
+<h1 id="试用责任链模式的情景"><a href="#试用责任链模式的情景" class="headerlink" title="试用责任链模式的情景"></a>试用责任链模式的情景</h1><ul>
+<li>有许多对象可以处理用户的请求，希望程序在运行期间自动确定处理用户的那个对象。</li>
+<li>希望用户不必明确指定接受者的情况下，向多个接受者的一个提交请求。</li>
+<li>程序希望动态制定可处理用户请求的对象集合。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/责任链模式/">责任链模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
     <article id="post-Java设计模式--适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -253,7 +350,7 @@
 <li>目标（Target）和被适配者（Adaptee）是完全解耦的关系。</li>
 <li>适配器模式满足“开-闭原则”。当添加一个实现Adaptee接口的新类时，不必修改Adapter，Adapter就能对这个新类的实例进行适配。</li>
 </ul>
-<h1 id="试用工厂模式的情景"><a href="#试用工厂模式的情景" class="headerlink" title="试用工厂模式的情景"></a>试用工厂模式的情景</h1><ul>
+<h1 id="试用适配器模式的情景"><a href="#试用适配器模式的情景" class="headerlink" title="试用适配器模式的情景"></a>试用适配器模式的情景</h1><ul>
 <li>用户需要一个类的子类的实例，但不希望与该类的子类形成耦合。</li>
 <li>用户需要一个类的子类的实例，但用户不知道该类有哪些子类可用。</li>
 </ul>

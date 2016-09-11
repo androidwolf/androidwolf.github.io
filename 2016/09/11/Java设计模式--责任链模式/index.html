@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java设计模式--责任链模式 | 起今知行 | 跨越者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="责任链模式使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
+Chain of Responsibility PatternA void coupling the sender of a request to its receiver by giving more than one object">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java设计模式--责任链模式">
+<meta property="og:url" content="http://yoursite.com/2016/09/11/Java设计模式--责任链模式/index.html">
+<meta property="og:site_name" content="起今知行 | 跨越者">
+<meta property="og:description" content="责任链模式使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
+Chain of Responsibility PatternA void coupling the sender of a request to its receiver by giving more than one object">
+<meta property="og:image" content="http://i1.piimg.com/4851/46acb4ac8f093e1a.png">
+<meta property="og:updated_time" content="2016-09-11T03:11:16.134Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java设计模式--责任链模式">
+<meta name="twitter:description" content="责任链模式使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
+Chain of Responsibility PatternA void coupling the sender of a request to its receiver by giving more than one object">
+<meta name="twitter:image" content="http://i1.piimg.com/4851/46acb4ac8f093e1a.png">
+  
+    <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/me.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">yxx</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">知我者谓我心忧，不知我者谓我何求</p>
+        
+        
+        <form><input type="text" class="search" placeholder=" Search..."></form>
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="#" title="Email"></a></li>
+                            
+                                <li id="新浪微博"><a class="新浪微博" target="_blank" href="/weibo" title="新浪微博"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/GitHub" title="GitHub"></a></li>
+                            
+                                <li id="微信"><a class="微信" target="_blank" href="/Wechat" title="微信"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://androidwolf.github.io/">Me</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/androidwolf">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/bug_moving">CSND</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱谈天跨地的秀秀</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">yxx</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/me.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">yxx</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">知我者谓我心忧，不知我者谓我何求</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="#" title="Email"></a></li>
+                            
+                                <li id="新浪微博"><a class="新浪微博" target="_blank" href="/weibo" title="新浪微博"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/GitHub" title="GitHub"></a></li>
+                            
+                                <li id="微信"><a class="微信" target="_blank" href="/Wechat" title="微信"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Java设计模式--责任链模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/11/Java设计模式--责任链模式/" class="article-date">
+      <time datetime="2016-09-11T02:19:06.000Z" itemprop="datePublished">2016-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java设计模式--责任链模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/责任链模式/">责任链模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h1><p>使多个对象都有机会都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+<h1 id="Chain-of-Responsibility-Pattern"><a href="#Chain-of-Responsibility-Pattern" class="headerlink" title="Chain of Responsibility Pattern"></a>Chain of Responsibility Pattern</h1><p>A void coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i1.piimg.com/4851/46acb4ac8f093e1a.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>责任链模式的结构中包括两种角色。</p>
+<ul>
+<li>处理者（Handler）：处理者是一个接口，负责规定具体处理者处理用户请求的方法以及具体处理者设置后继对象的方法。</li>
+<li>具体处理者（Concrete Handler）：具体处理者是实现处理者的类的实例。具体处理者通过调用处理者接口规定的方法处理用户的请求，即在接到用户的请求后，处理者将调用接口规定的方法，在执行该方法的过程中，如果发现能处理用户的请求，就处理有关数据，否则就反馈无法处理的信息给用户，然后将用户的请求传递给自己的后继对象。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Handler的抽象类Handler-java"><a href="#Handler的抽象类Handler-java" class="headerlink" title="Handler的抽象类Handler.java"></a>Handler的抽象类Handler.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String number)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteHandler的实现类Beijing-java"><a href="#ConcreteHandler的实现类Beijing-java" class="headerlink" title="ConcreteHandler的实现类Beijing.java"></a>ConcreteHandler的实现类Beijing.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Beijing</span> <span class="keyword">implements</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Handler handler;</div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; numberList;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Beijing</span><span class="params">()</span> </span>&#123;</div><div class="line">		numberList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">		numberList.add(<span class="string">"11029812340930034"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930033"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930032"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930031"</span>);</div><div class="line">		numberList.add(<span class="string">"11029812340930030"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String number)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (numberList.contains(number)) &#123;</div><div class="line">			System.out.println(<span class="string">"该人在北京住"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(<span class="string">"该人不在北京住"</span>);</div><div class="line">			<span class="keyword">if</span> (handler!=<span class="keyword">null</span>) &#123;</div><div class="line">				handler.handleRequest(number);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.handler = handler;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteHandler的实现类Shanghai-java"><a href="#ConcreteHandler的实现类Shanghai-java" class="headerlink" title="ConcreteHandler的实现类Shanghai.java"></a>ConcreteHandler的实现类Shanghai.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Shanghai</span> <span class="keyword">implements</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Handler handler;</div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; numberList;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Shanghai</span><span class="params">()</span> </span>&#123;</div><div class="line">		numberList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">		numberList.add(<span class="string">"12029812340930034"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930033"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930032"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930031"</span>);</div><div class="line">		numberList.add(<span class="string">"12029812340930030"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String number)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (numberList.contains(number)) &#123;</div><div class="line">			System.out.println(<span class="string">"该人住在上海"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(<span class="string">"该人不住在上海"</span>);</div><div class="line">			<span class="keyword">if</span> (handler!=<span class="keyword">null</span>) &#123;</div><div class="line">				handler.handleRequest(number);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.handler = handler;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Handler;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Handler beijing,shanghai;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createChain</span><span class="params">()</span> </span>&#123;</div><div class="line">		beijing = <span class="keyword">new</span> Beijing();</div><div class="line">		shanghai = <span class="keyword">new</span> Shanghai();</div><div class="line">		beijing.setHandler(shanghai);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reponseClient</span><span class="params">(String number)</span> </span>&#123;</div><div class="line">		beijing.handleRequest(number);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Application application = <span class="keyword">new</span> Application();</div><div class="line">		application.createChain();</div><div class="line">		application.reponseClient(<span class="string">"12029812340930034"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="责任链模式的优点"><a href="#责任链模式的优点" class="headerlink" title="责任链模式的优点"></a>责任链模式的优点</h1><ul>
+<li>责任链中的对象只和自己的后继是低耦合关系，和其他对象毫无关联，这使得编写处理者对象以及创建责任链变得非常容易。</li>
+<li>当在处理者中分配职责时，责任链给应用程序更多的灵活性。</li>
+<li>应用程序可以动态地增加、删除处理者或重新指派处理者的职责。</li>
+<li>应用程序可以动态地改变处理者之间的先后顺序。</li>
+<li>使用责任链的用户不必知道处理者的信息，用户不会知道到底是哪个对象处理了它的请求。</li>
+</ul>
+<h1 id="试用责任链模式的情景"><a href="#试用责任链模式的情景" class="headerlink" title="试用责任链模式的情景"></a>试用责任链模式的情景</h1><ul>
+<li>有许多对象可以处理用户的请求，希望程序在运行期间自动确定处理用户的那个对象。</li>
+<li>希望用户不必明确指定接受者的情况下，向多个接受者的一个提交请求。</li>
+<li>程序希望动态制定可处理用户请求的对象集合。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
+        <p><span>发布时间:</span>2016年09月11日 - 10时19分</p>
+        <p><span>最后更新:</span>2016年09月11日 - 11时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/11/Java设计模式--责任链模式/" title="Java设计模式--责任链模式">http://yoursite.com/2016/09/11/Java设计模式--责任链模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/11/Java设计模式--责任链模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/10/Java设计模式--适配器模式/">
+                    Java设计模式--适配器模式
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#责任链模式"><span class="toc-number">1.</span> <span class="toc-text">责任链模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chain-of-Responsibility-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Chain of Responsibility Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Handler的抽象类Handler-java"><span class="toc-number">5.1.</span> <span class="toc-text">Handler的抽象类Handler.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteHandler的实现类Beijing-java"><span class="toc-number">5.2.</span> <span class="toc-text">ConcreteHandler的实现类Beijing.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteHandler的实现类Shanghai-java"><span class="toc-number">5.3.</span> <span class="toc-text">ConcreteHandler的实现类Shanghai.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.4.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#责任链模式的优点"><span class="toc-number">6.</span> <span class="toc-text">责任链模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#试用责任链模式的情景"><span class="toc-number">7.</span> <span class="toc-text">试用责任链模式的情景</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/09/10/Java设计模式--适配器模式/" title="下一篇: Java设计模式--适配器模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/Java设计模式--适配器模式/">Java设计模式--适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--观察者模式/">Java设计模式--观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: false,
+            isPost: true,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 yxx
+            </div>
+            <div class="footer-right">
+                <a href="https://androidwolf.github.io/" target="_blank" title="叶显秀的Github">yxx@版权所有，翻版绝对不究</a>
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
