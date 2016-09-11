@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
                     </div>
                 </section>
                 
@@ -205,6 +205,105 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Java设计模式--状态模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/11/Java设计模式--状态模式/" class="article-date">
+      <time datetime="2016-09-11T09:11:06.000Z" itemprop="datePublished">2016-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/11/Java设计模式--状态模式/">Java设计模式--状态模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="状态模式-别名：状态对象"><a href="#状态模式-别名：状态对象" class="headerlink" title="状态模式(别名：状态对象)"></a>状态模式(别名：状态对象)</h1><p>允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。</p>
+<h1 id="State-Pattern-Another-Name-Object-for-States"><a href="#State-Pattern-Another-Name-Object-for-States" class="headerlink" title="State Pattern(Another Name: Object for States)"></a>State Pattern(Another Name: Object for States)</h1><p>Allow an object to alert its behavior when its internal state changes. The object will appear to change its class.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i1.piimg.com/4851/46acb4ac8f093e1a.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>状态模式的结构中包括三种角色。</p>
+<ul>
+<li>环境（Context）：环境是一个类，该类含有抽象状态（State）声明的变量，可以引用任何具体状态类的实例。用户对该环境（Context）类的实例在某种状态下的行为感兴趣。</li>
+<li>抽象状态（State）：抽象状态是一个接口或抽象类。抽象状态中定义了与环境（Context）的一个特定状态相关的如果个方法。</li>
+<li>具体状态（Concrete State）：具体状态是实现（扩展）抽象状态（抽象类）的类。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="State的接口类TemperatureState-java"><a href="#State的接口类TemperatureState-java" class="headerlink" title="State的接口类TemperatureState.java"></a>State的接口类TemperatureState.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> State;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TemperatureState</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTemperature</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Context环境类Thermometer-java"><a href="#Context环境类Thermometer-java" class="headerlink" title="Context环境类Thermometer.java"></a>Context环境类Thermometer.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> State;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thermometer</span> </span>&#123;</div><div class="line">	TemperatureState state;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMessage</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"*************"</span>);</div><div class="line">		state.showTemperature();</div><div class="line">		System.out.println(<span class="string">"*************"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(TemperatureState state)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.state = state;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteState的实现类LowState-java"><a href="#ConcreteState的实现类LowState-java" class="headerlink" title="ConcreteState的实现类LowState.java"></a>ConcreteState的实现类LowState.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> State;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LowState</span> <span class="keyword">implements</span> <span class="title">TemperatureState</span> </span>&#123;</div><div class="line">	<span class="keyword">double</span> n = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">LowState</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">this</span>.n = n;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTemperature</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"现在的温度是"</span> + n + <span class="string">"属于低温度"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteState的实现类MiddleState-java"><a href="#ConcreteState的实现类MiddleState-java" class="headerlink" title="ConcreteState的实现类MiddleState.java"></a>ConcreteState的实现类MiddleState.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> State;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MiddleState</span> <span class="keyword">implements</span> <span class="title">TemperatureState</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">double</span> n = <span class="number">15</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MiddleState</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n &gt; <span class="number">0</span> &amp;&amp; n &lt; <span class="number">26</span>) &#123;</div><div class="line">			<span class="keyword">this</span>.n = n;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTemperature</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"现在的温度是"</span> + n + <span class="string">"属于正常温度"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteState的实现类HighState-java"><a href="#ConcreteState的实现类HighState-java" class="headerlink" title="ConcreteState的实现类HighState..java"></a>ConcreteState的实现类HighState..java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> State;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HighState</span> <span class="keyword">implements</span> <span class="title">TemperatureState</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">double</span> n = <span class="number">39</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HighState</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (n &gt; <span class="number">26</span>) &#123;</div><div class="line">			<span class="keyword">this</span>.n = n;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTemperature</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"现在的温度是"</span> + n + <span class="string">"属于高温"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> State;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		TemperatureState state = <span class="keyword">new</span> LowState(-<span class="number">12</span>);</div><div class="line">		Thermometer thermometer = <span class="keyword">new</span> Thermometer();</div><div class="line">		thermometer.setState(state);</div><div class="line">		thermometer.showMessage();</div><div class="line">		state = <span class="keyword">new</span> MiddleState(<span class="number">15</span>);</div><div class="line">		thermometer.setState(state);</div><div class="line">		thermometer.showMessage();</div><div class="line">		state = <span class="keyword">new</span> HighState(<span class="number">40</span>);</div><div class="line">		thermometer.setState(state);</div><div class="line">		thermometer.showMessage();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="状态模式的优点"><a href="#状态模式的优点" class="headerlink" title="状态模式的优点"></a>状态模式的优点</h1><ul>
+<li>使用一个类封装对象的一种状态，很容易增加新的状态。</li>
+<li>在状态模式中，环境（Context）中不必出现大量的条件判断语句。环境（Context）实例所呈现的状态变得更加清晰、容易理解。</li>
+<li>使用状态模式可以让用户程序很方便地切换环境（Context）实例的状态。</li>
+<li>使用状态模式不会让环境（Context）的实例中出现内部状态不一致的情况。</li>
+<li>当状态对象没有实例变量时，环境（Context）的各个实例可以共享一个状态对象。</li>
+</ul>
+<h1 id="适用状态模式的情景"><a href="#适用状态模式的情景" class="headerlink" title="适用状态模式的情景"></a>适用状态模式的情景</h1><ul>
+<li>一个对象的行为依赖于它的状态，并且它必须在运行时根据状态改变它的行为。</li>
+<li>需要编写大量的条件分支语句来决定一个操作的行为，而且这些条件恰好表示对象的一种状态。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状态模式/">状态模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-Java设计模式--责任链模式" class="article article-type-post" itemscope itemprop="blogPost">
   
