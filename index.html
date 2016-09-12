@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
                     </div>
                 </section>
                 
@@ -205,6 +205,101 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Java设计模式--享元模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/12/Java设计模式--享元模式/" class="article-date">
+      <time datetime="2016-09-12T00:07:06.000Z" itemprop="datePublished">2016-09-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/12/Java设计模式--享元模式/">Java设计模式--享元模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>运用共享技术有效的支持<font color="#0099ff" size="5">大量细粒度</font>的对象。</p>
+<h1 id="Flyweight-Pattern"><a href="#Flyweight-Pattern" class="headerlink" title="Flyweight Pattern"></a>Flyweight Pattern</h1><p>Use sharing to support large numbers of fine-grained objects efficiently.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://ww4.sinaimg.cn/large/0060lm7Tgw1f7qtadbknjj30hk08tjsc.jpg" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>享元方法模式的结构中包括三种角色。</p>
+<ul>
+<li>享元接口（Flyweight）：是一个接口，该接口定义了享元对外公开其内部数据的方法，以及享元接收外部数据的方法。</li>
+<li>具体享元（Concrete Flyweight）：实现享元接口的类，该类的实例称为享元对象，或简称享元。具体享元类的成员变量为享元对象的内部状态，享元对象的内部状态必须与所处的周围环境无关，即要保证使用享元对象的应用程序无法更改享元的内部状态，只有这样才能使得享元对象在系统中被共享。因为享元对象是用来共享的，所以不能允许用户各自地使用具体享元类来创建对象，这样就无法达到共享的目的，因为不同用户用具体享元类创建的对象显然是不同的，所以，具体享元类的构造方法必须是private的，其目的是不允许用户程序直接使用具体享元类来创建享元对象，创建和管理享元对象由享元工厂负责。</li>
+<li>享元工厂（Flyweight Factory）：享元工厂是一个类，该类的实例负责创建和管理享元对象，用户或其他对象必须请求享元工厂为它得到一个享元对象。享元工厂可以通过一个散列表（也称共享池）来管理享元对象，当用户程序或其他若干个对象向享元工厂请求一个享元对象时，如果享元工厂的散列表中已有这样的享元对象，享元工厂就提供这个享元对象给请求者，否则就创建一个享元对象添加到散列表中，同时该享元对象提供给请求者。显然，当若干个用户或对象请求享元工厂提供一个享元对象时，第一个用户获得该享元对象的时间可能慢一些，但是后继的用户会较快地获得这个享元对象。可以使用单例模式来设计享元工厂，即让系统中只有一个享元工厂的实例。另外，为了让享元工厂能生成享元对象，需要将具体享元类作为享元工厂的内部类。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Flyweight的抽象类Flyweight-java"><a href="#Flyweight的抽象类Flyweight-java" class="headerlink" title="Flyweight的抽象类Flyweight.java"></a>Flyweight的抽象类Flyweight.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Flyweight;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Flyweight</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getHeight</span><span class="params">()</span></span>;      <span class="comment">//返回内部数据</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getWidth</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getLength</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printMess</span><span class="params">(String mess)</span></span>;  <span class="comment">//使用参数mess获取外部数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Flyweight-Factory的实现类FlyweightFactory-java"><a href="#Flyweight-Factory的实现类FlyweightFactory-java" class="headerlink" title="Flyweight Factory的实现类FlyweightFactory.java"></a>Flyweight Factory的实现类FlyweightFactory.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Flyweight;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyweightFactory</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> HashMap&lt;String, Flyweight&gt; hashMap;</div><div class="line">	<span class="keyword">static</span> FlyweightFactory factory = <span class="keyword">new</span> FlyweightFactory();</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FlyweightFactory</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.hashMap = <span class="keyword">new</span> HashMap&lt;String, Flyweight&gt;();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FlyweightFactory <span class="title">getFactory</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> factory;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Flyweight <span class="title">getFlyweight</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (hashMap.containsKey(key)) &#123;</div><div class="line">			<span class="keyword">return</span> hashMap.get(key);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">double</span> width = <span class="number">0</span>,height = <span class="number">0</span>,lenght = <span class="number">0</span>;</div><div class="line">			String[] str = key.split(<span class="string">"#"</span>);</div><div class="line">			width = Double.parseDouble(str[<span class="number">0</span>]);</div><div class="line">			height = Double.parseDouble(str[<span class="number">1</span>]);</div><div class="line">			lenght = Double.parseDouble(str[<span class="number">2</span>]);</div><div class="line">			Flyweight ft = <span class="keyword">new</span> ConcreteFlyweight(width, height, lenght);</div><div class="line">			hashMap.put(key, ft);</div><div class="line">			<span class="keyword">return</span> ft;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">ConcreteFlyweight</span> <span class="keyword">implements</span> <span class="title">Flyweight</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="keyword">private</span> <span class="keyword">double</span> width;</div><div class="line">		<span class="keyword">private</span> <span class="keyword">double</span> height;</div><div class="line">		<span class="keyword">private</span> <span class="keyword">double</span> lenght;</div><div class="line">		</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ConcreteFlyweight</span><span class="params">(<span class="keyword">double</span> width, <span class="keyword">double</span> height, <span class="keyword">double</span> lenght)</span> </span>&#123;</div><div class="line">			<span class="keyword">this</span>.width = width;</div><div class="line">			<span class="keyword">this</span>.height = height;</div><div class="line">			<span class="keyword">this</span>.lenght = lenght;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getHeight</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> height;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getWidth</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> width;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getLength</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> lenght;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printMess</span><span class="params">(String mess)</span> </span>&#123;</div><div class="line">			System.out.println(mess);</div><div class="line">			System.out.print(<span class="string">"宽度:"</span> + width);</div><div class="line">			System.out.print(<span class="string">"高度:"</span> + height);</div><div class="line">			System.out.print(<span class="string">"长度:"</span> + lenght);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="需要使用共享数据的类Car-java"><a href="#需要使用共享数据的类Car-java" class="headerlink" title="需要使用共享数据的类Car.java"></a>需要使用共享数据的类Car.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Flyweight;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</div><div class="line">	Flyweight flyweight;</div><div class="line">	String name, color;</div><div class="line">	<span class="keyword">int</span> power;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">(Flyweight flyweight, String name, String color, <span class="keyword">int</span> power)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.flyweight = flyweight;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.color = color;</div><div class="line">		<span class="keyword">this</span>.power = power;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"名称:"</span> + name);</div><div class="line">		System.out.println(<span class="string">"颜色:"</span> + color);</div><div class="line">		System.out.println(<span class="string">"功率:"</span> + power);</div><div class="line">		System.out.println(<span class="string">"宽度:"</span> + flyweight.getWidth());</div><div class="line">		System.out.println(<span class="string">"高度:"</span> + flyweight.getHeight());</div><div class="line">		System.out.println(<span class="string">"长度:"</span> + flyweight.getLength());</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Flyweight;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		FlyweightFactory factory = FlyweightFactory.getFactory();</div><div class="line">		<span class="keyword">double</span> width = <span class="number">1.82</span>, height = <span class="number">1.47</span>, lenght = <span class="number">5.12</span>;</div><div class="line">		String key = <span class="string">""</span> + width + <span class="string">"#"</span> + height + <span class="string">"#"</span> + lenght;</div><div class="line">		Flyweight flyweight = factory.getFlyweight(key);</div><div class="line">		Car audiA60ne = <span class="keyword">new</span> Car(flyweight, <span class="string">"奥迪A6"</span>, <span class="string">"黑色"</span>, <span class="number">128</span>);</div><div class="line">		Car audiA6Two = <span class="keyword">new</span> Car(flyweight, <span class="string">"奥迪A6"</span>, <span class="string">"灰色"</span>, <span class="number">160</span>);</div><div class="line">		<span class="comment">//audiA60ne和audiA6Two没有向享元传递外部数据，而是获取享元的内部数据</span></div><div class="line">		audiA60ne.print();</div><div class="line">		audiA6Two.print();</div><div class="line">		width = <span class="number">1.77</span>;</div><div class="line">		height = <span class="number">1.45</span>;</div><div class="line">		lenght = <span class="number">4.63</span>;</div><div class="line">		key = <span class="string">""</span> + width + <span class="string">"#"</span> + height + <span class="string">"#"</span> + lenght;</div><div class="line">		Car audiA40ne = <span class="keyword">new</span> Car(flyweight, <span class="string">"奥迪A4"</span>, <span class="string">"蓝色"</span>, <span class="number">126</span>);</div><div class="line">		Car audiA4Two = <span class="keyword">new</span> Car(flyweight, <span class="string">"奥迪A4"</span>, <span class="string">"红色"</span>, <span class="number">138</span>);</div><div class="line">		<span class="comment">//audiA40ne和audiA4Two向享元传递外部数据，这些数据是不共享的</span></div><div class="line">		flyweight.printMess(<span class="string">"名称: 奥迪A4 颜色：蓝色 功率：126"</span>);</div><div class="line">		flyweight.printMess(<span class="string">"名称: 奥迪A4 颜色：红色 功率：138"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h1><p><img src="http://ww1.sinaimg.cn/large/0060lm7Tgw1f7qyhb79v8j30hf0agdha.jpg" alt=""></p>
+<h1 id="享元模式的优点"><a href="#享元模式的优点" class="headerlink" title="享元模式的优点"></a>享元模式的优点</h1><ul>
+<li>使用享元模式可以节省内存的开销，特别适合处理<font color="#0099ff" size="5">大量细粒度</font>对象，这些对象的许多属性值是相同的，而且一旦创建则不容许修改。</li>
+<li>享元模式中的享元可以使用方法的参数接收外部状态中的数据，但外部状态数据不会干扰到享元中的内部数据，这就使享元可以在不同的环境中被共享。</li>
+</ul>
+<h1 id="适用享元模式的情景"><a href="#适用享元模式的情景" class="headerlink" title="适用享元模式的情景"></a>适用享元模式的情景</h1><h2 id="下列情况之一就可以考虑使用享元模式"><a href="#下列情况之一就可以考虑使用享元模式" class="headerlink" title="下列情况之一就可以考虑使用享元模式:"></a>下列情况之一就可以考虑使用享元模式:</h2><ul>
+<li>一个应用程序使用大量的对象，这些对象之间部分属性本质上是相同的，这时应使用享元来封装相同的部分。</li>
+<li>对象的多数状态都可变为外部状态，就可以考虑将这些对象作为系统中的享元来使用。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/享元模式/">享元模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-Java设计模式--状态模式" class="article article-type-post" itemscope itemprop="blogPost">
   
