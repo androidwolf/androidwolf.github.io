@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
                     </div>
                 </section>
                 
@@ -205,6 +205,107 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Java设计模式--解释器模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/14/Java设计模式--解释器模式/" class="article-date">
+      <time datetime="2016-09-14T05:03:06.000Z" itemprop="datePublished">2016-09-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/14/Java设计模式--解释器模式/">Java设计模式--解释器模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h1><p>给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。</p>
+<h1 id="Interpreter-Pattern"><a href="#Interpreter-Pattern" class="headerlink" title="Interpreter Pattern"></a>Interpreter Pattern</h1><p>Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i2.buimg.com/4851/49431bbfc605142f.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>解释器模式的结构中包括四个角色。</p>
+<ul>
+<li>抽象表达式（AbstractExpression）：该角色为一个接口，负责定义抽象的解释操作。</li>
+<li>终结符表达式（TerminalExpression）：实现AbstractExpression接口的类。该类将接口中的解释器操作实现为与文法中的终结符相关联的操作，即文法中的每个终结符需要一个TerminalExpression类。</li>
+<li>非终结符表达式（NonterminalExpression）：实现AbstractExpression接口的类。文法中的每一条规则R::=R1R2…Rn都需要一个NonterminalExpression类。NonterminalExpression类为文法中的非终结符号实现解释操作，该解释操作通常使用递归用表示Ri到Rn的那些对象的解释操作。</li>
+<li>上下文（Context）：包含解释器之外的一些全局信息。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Node的接口类Dog-java"><a href="#Node的接口类Dog-java" class="headerlink" title="Node的接口类Dog.java"></a>Node的接口类Dog.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Node</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context text)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Context的类Context-java"><a href="#Context的类Context-java" class="headerlink" title="Context的类Context.java"></a>Context的类Context.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.StringTokenizer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</div><div class="line">	StringTokenizer tokenizer;</div><div class="line">	String token;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">		setContext(text);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContext</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">		tokenizer = <span class="keyword">new</span> StringTokenizer(text);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function">String <span class="title">nextToken</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (tokenizer.hasMoreTokens()) &#123;</div><div class="line">			token = tokenizer.nextToken();</div><div class="line">		&#125; <span class="keyword">else</span> </div><div class="line">			token = <span class="string">""</span>;</div><div class="line">		<span class="keyword">return</span> token;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Node的实现类SubjectPronounOrNounNode-java"><a href="#Node的实现类SubjectPronounOrNounNode-java" class="headerlink" title="Node的实现类SubjectPronounOrNounNode.java"></a>Node的实现类SubjectPronounOrNounNode.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubjectPronounOrNounNode</span> <span class="keyword">implements</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">	String[] word = &#123;<span class="string">"You"</span>, <span class="string">"He"</span>, <span class="string">"Teacher"</span>, <span class="string">"Student"</span>&#125;;</div><div class="line">	String token;</div><div class="line">	<span class="keyword">boolean</span> boo;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">		token = context.nextToken();</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (; i &lt; word.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[i])) &#123;</div><div class="line">				boo = <span class="keyword">true</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (i == word.length) &#123;</div><div class="line">			boo = <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (boo) &#123;</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">0</span>]))</div><div class="line">				System.out.print(<span class="string">"你"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">1</span>]))</div><div class="line">				System.out.print(<span class="string">"他"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">2</span>]))</div><div class="line">				System.out.print(<span class="string">"老师"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">3</span>]))</div><div class="line">				System.out.print(<span class="string">"学生"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(token + <span class="string">"(不是该语言中的语句)"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Node的实现类ObjectPronounOrNounNode-java"><a href="#Node的实现类ObjectPronounOrNounNode-java" class="headerlink" title="Node的实现类ObjectPronounOrNounNode.java"></a>Node的实现类ObjectPronounOrNounNode.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectPronounOrNounNode</span> <span class="keyword">implements</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">	String[] word = &#123;<span class="string">"Me"</span>, <span class="string">"Him"</span>, <span class="string">"Tiger"</span>, <span class="string">"Apple"</span>&#125;;</div><div class="line">	String token;</div><div class="line">	<span class="keyword">boolean</span> boo;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">		token = context.nextToken();</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (; i &lt; word.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[i])) &#123;</div><div class="line">				boo = <span class="keyword">true</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (i == word.length) &#123;</div><div class="line">			boo = <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (boo) &#123;</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">0</span>]))</div><div class="line">				System.out.print(<span class="string">"我"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">1</span>]))</div><div class="line">				System.out.print(<span class="string">"他"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">2</span>]))</div><div class="line">				System.out.print(<span class="string">"老虎"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">3</span>]))</div><div class="line">				System.out.print(<span class="string">"苹果"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(token + <span class="string">"(不是该语言中的语句)"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Node的实现类VerbNode-java"><a href="#Node的实现类VerbNode-java" class="headerlink" title="Node的实现类VerbNode.java"></a>Node的实现类VerbNode.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VerbNode</span> <span class="keyword">implements</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">	String[] word = &#123;<span class="string">"Drink"</span>, <span class="string">"Eat"</span>, <span class="string">"Look"</span>, <span class="string">"beat"</span>&#125;;</div><div class="line">	String token;</div><div class="line">	<span class="keyword">boolean</span> boo;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">		token = context.nextToken();</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (; i &lt; word.length; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[i])) &#123;</div><div class="line">				boo = <span class="keyword">true</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (i == word.length) &#123;</div><div class="line">			boo = <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (boo) &#123;</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">0</span>]))</div><div class="line">				System.out.print(<span class="string">"喝"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">1</span>]))</div><div class="line">				System.out.print(<span class="string">"吃"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">2</span>]))</div><div class="line">				System.out.print(<span class="string">"看"</span>);</div><div class="line">			<span class="keyword">if</span> (token.equalsIgnoreCase(word[<span class="number">3</span>]))</div><div class="line">				System.out.print(<span class="string">"打"</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(token + <span class="string">"(不是该语言中的语句)"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Node的实现类SubjectNode-java"><a href="#Node的实现类SubjectNode-java" class="headerlink" title="Node的实现类SubjectNode.java"></a>Node的实现类SubjectNode.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubjectNode</span> <span class="keyword">implements</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">	Node node;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context text)</span> </span>&#123;</div><div class="line">		node = <span class="keyword">new</span> SubjectPronounOrNounNode();</div><div class="line">		node.parse(text);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">		node.execute();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Node的实现类PredicateNode-java"><a href="#Node的实现类PredicateNode-java" class="headerlink" title="Node的实现类PredicateNode.java"></a>Node的实现类PredicateNode.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">papackage Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PredicateNode</span> <span class="keyword">implements</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">	Node verbNode, objectNode;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context text)</span> </span>&#123;</div><div class="line">		verbNode = <span class="keyword">new</span> VerbNode();</div><div class="line">		objectNode = <span class="keyword">new</span> ObjectPronounOrNounNode();</div><div class="line">		verbNode.parse(text);</div><div class="line">		objectNode.parse(text);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">		verbNode.execute();</div><div class="line">		objectNode.execute();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Node的实现类SentenceNode-java"><a href="#Node的实现类SentenceNode-java" class="headerlink" title="Node的实现类SentenceNode.java"></a>Node的实现类SentenceNode.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SentenceNode</span> <span class="keyword">implements</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">	Node subjectNode, predicateNode;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parse</span><span class="params">(Context text)</span> </span>&#123;</div><div class="line">		subjectNode = <span class="keyword">new</span> SubjectNode();</div><div class="line">		predicateNode = <span class="keyword">new</span> PredicateNode();</div><div class="line">		subjectNode.parse(text);</div><div class="line">		predicateNode.parse(text);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</div><div class="line">		subjectNode.execute();</div><div class="line">		predicateNode.execute();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Interpreter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		String text = <span class="string">"Teacher beat tiger"</span>;</div><div class="line">		Context context = <span class="keyword">new</span> Context(text);</div><div class="line">		Node node = <span class="keyword">new</span> SentenceNode();</div><div class="line">		node.parse(context);</div><div class="line">		node.execute();</div><div class="line">		System.out.println();</div><div class="line">		text = <span class="string">"You eat apple"</span>;</div><div class="line">		context.setContext(text);</div><div class="line">		node.parse(context);</div><div class="line">		node.execute();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p>老师打老虎<br>你吃苹果</p>
+<h1 id="解释器模式的优点"><a href="#解释器模式的优点" class="headerlink" title="解释器模式的优点"></a>解释器模式的优点</h1><ul>
+<li>将每一个语法规则表示成一个类，方便于实现简单的语言。</li>
+<li>由于使用类表示语法规则，可以较容易改变或扩展语言的行为。</li>
+<li>通过在类结构中加入新的方法，可以在解释的同时增加新的行为。</li>
+</ul>
+<h1 id="适用解释器模式的情景"><a href="#适用解释器模式的情景" class="headerlink" title="适用解释器模式的情景"></a>适用解释器模式的情景</h1><ul>
+<li>当有一个简单的语言需要解释执行，并且可以将该语言的每一个规则表示为一个类时，就可以使用解释模式。<font color="#0099ff" size="5">注意：人员故意文法过于复杂，那么过多的文法规则使我们很艰难维护所给出的类。</font></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解释器模式/">解释器模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-Java设计模式--备忘录模式" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1058,80 +1159,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工厂模式/">工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-        <script>
-            var yiliaConfig = {
-            fancybox: true,
-            mathjax: true,
-            animate: true,
-            isHome: true,
-            isPost: false,
-            isArchive: false,
-            isTag: false,
-            isCategory: false,
-            open_in_new: false
-            }
-        </script>
-        
-
-  
-    <article id="post-CSDN--Me" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/04/CSDN--Me/" class="article-date">
-      <time datetime="2016-09-04T15:59:06.000Z" itemprop="datePublished">2016-09-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><a href="http://blog.csdn.net/bug_moving" target="_blank" rel="external">http://blog.csdn.net/bug_moving</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/personal/">personal</a></li></ul>
     </div>
 
       
