@@ -3,21 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | 起今知行 | 跨越者</title>
+  <title>Java设计模式--代理模式 | 起今知行 | 跨越者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="代理模式为其他对象提供一种代理以控制对这个对象的访问。
+Proxy PatternProvide a surrogate or placeholder for another object to control access to it.
+类图
+模式的结构与使用代理方法模式的结构中包括三种角色。
+
+抽象主题（Subject）：抽象主题是一个接口，该接口是对象和它的代理所共用的接口，即是RealSu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/09/04/hello-world/index.html">
+<meta property="og:title" content="Java设计模式--代理模式">
+<meta property="og:url" content="http://yoursite.com/2016/09/17/Java设计模式--代理模式/index.html">
 <meta property="og:site_name" content="起今知行 | 跨越者">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-09-04T14:34:55.371Z">
+<meta property="og:description" content="代理模式为其他对象提供一种代理以控制对这个对象的访问。
+Proxy PatternProvide a surrogate or placeholder for another object to control access to it.
+类图
+模式的结构与使用代理方法模式的结构中包括三种角色。
+
+抽象主题（Subject）：抽象主题是一个接口，该接口是对象和它的代理所共用的接口，即是RealSu">
+<meta property="og:image" content="http://i2.buimg.com/4851/c272a00cd9ca21fb.png">
+<meta property="og:image" content="http://i2.buimg.com/4851/21f377b981f39c9d.png">
+<meta property="og:updated_time" content="2016-09-17T15:59:33.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Java设计模式--代理模式">
+<meta name="twitter:description" content="代理模式为其他对象提供一种代理以控制对这个对象的访问。
+Proxy PatternProvide a surrogate or placeholder for another object to control access to it.
+类图
+模式的结构与使用代理方法模式的结构中包括三种角色。
+
+抽象主题（Subject）：抽象主题是一个接口，该接口是对象和它的代理所共用的接口，即是RealSu">
+<meta name="twitter:image" content="http://i2.buimg.com/4851/c272a00cd9ca21fb.png">
   
     <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
   
@@ -205,11 +220,11 @@ Quick">
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java设计模式--代理模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/04/hello-world/" class="article-date">
-      <time datetime="2016-09-04T14:34:55.370Z" itemprop="datePublished">2016-09-04</time>
+      <a href="/2016/09/17/Java设计模式--代理模式/" class="article-date">
+      <time datetime="2016-09-17T01:53:06.000Z" itemprop="datePublished">2016-09-17</time>
 </a>
     </div>
   
@@ -222,7 +237,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Java设计模式--代理模式
     </h1>
   
 
@@ -232,6 +247,10 @@ Quick">
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代理模式/">代理模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -239,15 +258,29 @@ Quick">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p>为其他对象提供一种代理以控制对这个对象的访问。</p>
+<h1 id="Proxy-Pattern"><a href="#Proxy-Pattern" class="headerlink" title="Proxy Pattern"></a>Proxy Pattern</h1><p>Provide a surrogate or placeholder for another object to control access to it.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i2.buimg.com/4851/c272a00cd9ca21fb.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>代理方法模式的结构中包括三种角色。</p>
+<ul>
+<li>抽象主题（Subject）：抽象主题是一个接口，该接口是对象和它的代理所共用的接口，即是RealSubject角色和Proxy角色实例所实现的接口。</li>
+<li>实际主题（RealSubject）：实际主题是实现抽象主题接口的类。实际主题的实例是代理角色(Proxy)实例所要代理的对象。</li>
+<li>代理（Proxy）：代理是实现抽象主题接口的类(代理和实际主题实现了相同的接口)。代理含有主题接口声明的变量，该变量用来存放RealSubject角色的实例引用，这样一来，代理的实例就可以控制对它所包含的RealSubject角色的实例访问，即可以控制对它所代理对象的访问。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Subject的接口类Geometry-java"><a href="#Subject的接口类Geometry-java" class="headerlink" title="Subject的接口类Geometry.java"></a>Subject的接口类Geometry.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Proxy;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Geometry</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getArea</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="RealSubject的实现类Triangle-java"><a href="#RealSubject的实现类Triangle-java" class="headerlink" title="RealSubject的实现类Triangle.java"></a>RealSubject的实现类Triangle.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Proxy;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Triangle</span> <span class="keyword">implements</span> <span class="title">Geometry</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">double</span> sideA, sideB, sideC, area;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Triangle</span><span class="params">(<span class="keyword">double</span> sideA, <span class="keyword">double</span> sideB, <span class="keyword">double</span> sideC)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.sideA = sideA;</div><div class="line">		<span class="keyword">this</span>.sideB = sideB;</div><div class="line">		<span class="keyword">this</span>.sideC = sideC;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getArea</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">double</span> p = (sideA + sideB + sideC) / <span class="number">2.0</span>;</div><div class="line">		area = Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));</div><div class="line">		<span class="keyword">return</span> area;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Proxy的实现类TriangleProxy-java"><a href="#Proxy的实现类TriangleProxy-java" class="headerlink" title="Proxy的实现类TriangleProxy.java"></a>Proxy的实现类TriangleProxy.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Proxy;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TriangleProxy</span> <span class="keyword">implements</span> <span class="title">Geometry</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">double</span> sideA, sideB, sideC;</div><div class="line">	Triangle triangle;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setABC</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b, <span class="keyword">double</span> c)</span> </span>&#123;</div><div class="line">		sideA = a;</div><div class="line">		sideB = b;</div><div class="line">		sideC = c;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getArea</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (sideA + sideB &gt; sideC &amp;&amp; sideA + sideC &gt; sideB</div><div class="line">				&amp;&amp; sideB + sideC &gt; sideA) &#123;</div><div class="line">			triangle = <span class="keyword">new</span> Triangle(sideA, sideB, sideC);</div><div class="line">			<span class="keyword">double</span> area = triangle.getArea();</div><div class="line">			<span class="keyword">return</span> area;</div><div class="line">		&#125; <span class="keyword">else</span></div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Proxy;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Scanner reader = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">		System.out.println(<span class="string">"请输入三个数"</span>);</div><div class="line">		<span class="keyword">double</span> a,b,c;</div><div class="line">		a = reader.nextDouble();</div><div class="line">		b = reader.nextDouble();</div><div class="line">		c = reader.nextDouble();</div><div class="line">		TriangleProxy tp = <span class="keyword">new</span> TriangleProxy();</div><div class="line">		tp.setABC(a, b, c);</div><div class="line">		System.out.println(<span class="string">"面积是:"</span> + tp.getArea());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="执行效果图"><a href="#执行效果图" class="headerlink" title="执行效果图"></a>执行效果图</h1><p><img src="http://i2.buimg.com/4851/21f377b981f39c9d.png" alt=""></p>
+<h1 id="远程代理"><a href="#远程代理" class="headerlink" title="远程代理"></a>远程代理</h1><p>先空着，有时间补</p>
+<h1 id="代理模式的优点"><a href="#代理模式的优点" class="headerlink" title="代理模式的优点"></a>代理模式的优点</h1><ul>
+<li>使用代理模式可以让用户的代码和某个特定类的子类的代码解耦。</li>
+<li>代理方法的使用用户不必知道它所使用的对象是怎么被创建的，只需要知道该对象有哪些方法即可。</li>
+</ul>
+<h1 id="适用代理模式的情景"><a href="#适用代理模式的情景" class="headerlink" title="适用代理模式的情景"></a>适用代理模式的情景</h1><ul>
+<li>用户需要一个类的子类的实例，但不希望与该类的子类形成耦合。</li>
+<li>用户需要一个类的子类的实例，但用户不知道该类有哪些子类可用。</li>
+</ul>
 
       
     </div>
@@ -256,13 +289,13 @@ Quick">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/04/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2016/09/17/Java设计模式--代理模式/">Java设计模式--代理模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
-        <p><span>发布时间:</span>2016年09月04日 - 22时34分</p>
-        <p><span>最后更新:</span>2016年09月04日 - 22时34分</p>
+        <p><span>发布时间:</span>2016年09月17日 - 09时53分</p>
+        <p><span>最后更新:</span>2016年09月17日 - 23时59分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/04/hello-world/" title="Hello World">http://yoursite.com/2016/09/04/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/04/hello-world/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/17/Java设计模式--代理模式/" title="Java设计模式--代理模式">http://yoursite.com/2016/09/17/Java设计模式--代理模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/17/Java设计模式--代理模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -276,11 +309,17 @@ Quick">
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/09/04/CSDN--Me/">
-                    CSDN--杜鲁门的博客
+                <a href="/2016/09/17/Java设计模式--模板方法模式/">
+                    Java设计模式--模板方法模式
                 </a>
             </div>
         
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/16/Java设计模式--访问者模式/">
+                    Java设计模式--访问者模式
+                </a>
+            </div>
         
     </nav>
 
@@ -289,7 +328,7 @@ Quick">
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式"><span class="toc-number">1.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Proxy-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Proxy Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Subject的接口类Geometry-java"><span class="toc-number">5.1.</span> <span class="toc-text">Subject的接口类Geometry.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RealSubject的实现类Triangle-java"><span class="toc-number">5.2.</span> <span class="toc-text">RealSubject的实现类Triangle.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxy的实现类TriangleProxy-java"><span class="toc-number">5.3.</span> <span class="toc-text">Proxy的实现类TriangleProxy.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.4.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行效果图"><span class="toc-number">6.</span> <span class="toc-text">执行效果图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程代理"><span class="toc-number">7.</span> <span class="toc-text">远程代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式的优点"><span class="toc-number">8.</span> <span class="toc-text">代理模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用代理模式的情景"><span class="toc-number">9.</span> <span class="toc-text">适用代理模式的情景</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -357,7 +396,7 @@ Quick">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/09/04/CSDN--Me/" title="上一篇: CSDN--杜鲁门的博客">
+            <a href="/2016/09/17/Java设计模式--模板方法模式/" title="上一篇: Java设计模式--模板方法模式">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -365,7 +404,9 @@ Quick">
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/09/16/Java设计模式--访问者模式/" title="下一篇: Java设计模式--访问者模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 

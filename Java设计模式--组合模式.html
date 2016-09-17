@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Java设计模式--工厂模式 | 起今知行 | 跨越者</title>
+  <title>Java设计模式--组合模式 | 起今知行 | 跨越者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单工厂方法模式(别名：虚拟构造)定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
-Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creating an object, but let subclasses decide which">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java设计模式--工厂模式">
-<meta property="og:url" content="http://yoursite.com/2016/09/06/Java设计模式--工厂模式/index.html">
+  <meta name="description" content="组合模式将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。
+Composite PatternCompose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects">
+<meta name="keywords">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Java设计模式--组合模式">
+<meta property="og:url" content="http://yoursite.com/Java设计模式--组合模式.html">
 <meta property="og:site_name" content="起今知行 | 跨越者">
-<meta property="og:description" content="简单工厂方法模式(别名：虚拟构造)定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
-Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creating an object, but let subclasses decide which">
+<meta property="og:description" content="组合模式将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。
+Composite PatternCompose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects">
 <meta property="og:image" content="http://i4.buimg.com/4851/da172bacf211ec7f.png">
-<meta property="og:updated_time" content="2016-09-11T03:19:24.442Z">
+<meta property="og:updated_time" content="2016-09-17T09:36:46.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java设计模式--工厂模式">
-<meta name="twitter:description" content="简单工厂方法模式(别名：虚拟构造)定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。
-Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creating an object, but let subclasses decide which">
+<meta name="twitter:title" content="Java设计模式--组合模式">
+<meta name="twitter:description" content="组合模式将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。
+Composite PatternCompose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects">
 <meta name="twitter:image" content="http://i4.buimg.com/4851/da172bacf211ec7f.png">
   
     <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
@@ -207,11 +208,11 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Java设计模式--工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/06/Java设计模式--工厂模式/" class="article-date">
-      <time datetime="2016-09-06T13:43:06.000Z" itemprop="datePublished">2016-09-06</time>
+      <a href="/Java设计模式--组合模式.html" class="article-date">
+      <time datetime="2016-09-17T09:33:06.000Z" itemprop="datePublished">2016-09-17</time>
 </a>
     </div>
   
@@ -224,7 +225,7 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
         
   
     <h1 class="article-title" itemprop="name">
-      Java设计模式--工厂模式
+      Java设计模式--组合模式
     </h1>
   
 
@@ -235,7 +236,7 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工厂模式/">工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/">undefined</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/">undefined</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/">undefined</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -245,15 +246,48 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="简单工厂方法模式-别名：虚拟构造"><a href="#简单工厂方法模式-别名：虚拟构造" class="headerlink" title="简单工厂方法模式(别名：虚拟构造)"></a>简单工厂方法模式(别名：虚拟构造)</h1><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。</p>
-<h1 id="Mediator-Pattern-Another-Name-Virtual-Constructor"><a href="#Mediator-Pattern-Another-Name-Virtual-Constructor" class="headerlink" title="Mediator Pattern(Another Name: Virtual Constructor)"></a>Mediator Pattern(Another Name: Virtual Constructor)</h1><p>Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.</p>
+              <style>
+    .article-meta {
+        display: none;
+    }
+    #container .article .article-title {
+        padding-right: 0;
+    }
+    .article-header {
+        padding: 0;
+        padding-top: 26px;
+        border-left: none;
+        text-align: center;
+    }
+    .article-header:hover {
+        border-left: none;
+    }
+    .article-title {
+        font-size: 1.6em
+    }
+    .article-meta {
+        display: none;
+    }
+    .article-entry hr {
+        margin: 0;
+    }
+    #container .article-info-post.article-info {
+      display: none;
+      }
+    #container .article .article-title {
+    padding: 0;
+    }
+</style>
+
+
+          
+        <h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。</p>
+<h1 id="Composite-Pattern"><a href="#Composite-Pattern" class="headerlink" title="Composite Pattern"></a>Composite Pattern</h1><p>Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.</p>
 <h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i4.buimg.com/4851/da172bacf211ec7f.png" alt=""></p>
-<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>工厂方法模式的结构中包括四个角色。</p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>组合方法模式的结构中包括两种角色。</p>
 <ul>
-<li>抽象产品（Product）：抽象类或接口，负责定义具体产品必须实现的方法。</li>
-<li>具体产品（Concrete Product）：具体产品是一个类，如果Product是一个抽象类，那么具体产品是Product的子类；如果Product是一个接口，那么具体产品去实现接口。</li>
-<li>构造者（Creator）：一个接口或者抽象类。构造者负责定义一个称作工厂方法的抽象方法，该方法返回具体产品类的实例。</li>
-<li>具体构造者（Concrete Creator）：具体构造者重写工厂方法使该方法返回具体产品的实例。</li>
+<li>抽象模板（Abstract Template）：抽象模板是一个抽象类。抽象模板定义了若干个方法以表示一个算法的各个步骤，这些方法中有抽象方法也有非抽象方法，其中的抽象方法称作原语操作(Primitive Operation)。重要的一点是，抽象模板中还定义了一个称作组合的方法，该方法不仅包含有抽象模板中表示算法步骤的方法调用，而且也可以包含有定义在抽象模板中的其他对象的方法调用，即组合定义了算法的骨架。</li>
+<li>具体模板（Concrete Template）：具体模板是抽象模板的子类，实现抽象模板中的原语操作。</li>
 </ul>
 <h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Product的抽象类Animals-java"><a href="#Product的抽象类Animals-java" class="headerlink" title="Product的抽象类Animals.java"></a>Product的抽象类Animals.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animals</span> </span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="ConcreteProduct的实现类Dog-java"><a href="#ConcreteProduct的实现类Dog-java" class="headerlink" title="ConcreteProduct的实现类Dog.java"></a>ConcreteProduct的实现类Dog.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span> </span>&#123;</div><div class="line">		name = <span class="string">"狗"</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span> <span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(name + <span class="string">"是走"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -262,13 +296,13 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
 <h2 id="ConcreteCreator的实现类DogCreator-java"><a href="#ConcreteCreator的实现类DogCreator-java" class="headerlink" title="ConcreteCreator的实现类DogCreator.java"></a>ConcreteCreator的实现类DogCreator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Animals <span class="title">getAnimal</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Dog();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="ConcreteCreator的实现类CatCreator-java"><a href="#ConcreteCreator的实现类CatCreator-java" class="headerlink" title="ConcreteCreator的实现类CatCreator.java"></a>ConcreteCreator的实现类CatCreator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Animals <span class="title">getAnimal</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Cat();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		DogCreator dog = <span class="keyword">new</span> DogCreator();</div><div class="line">		dog.getAnimal().move();</div><div class="line">		CatCreator cat = <span class="keyword">new</span> CatCreator();</div><div class="line">		cat.getAnimal().move();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="工厂模式的优点"><a href="#工厂模式的优点" class="headerlink" title="工厂模式的优点"></a>工厂模式的优点</h1><ul>
-<li>使用工厂模式可以让用户的代码和某个特定类的子类的代码解耦。</li>
-<li>工厂方法的使用用户不必知道它所使用的对象是怎么被创建的，只需要知道该对象有哪些方法即可。</li>
+<h1 id="组合模式的优点"><a href="#组合模式的优点" class="headerlink" title="组合模式的优点"></a>组合模式的优点</h1><ul>
+<li>可以通过在抽象模板定义组合给出成熟的算法步骤，同时又不限制步骤的细节，具体模板实现算法细节不会改变整个算法的骨架。</li>
+<li>在抽象模板模式中，可以通过钩子方法对某些步骤进行挂钩，具体模板通过钩子可以选择算法骨架中的某些步骤。</li>
 </ul>
-<h1 id="适用工厂模式的情景"><a href="#适用工厂模式的情景" class="headerlink" title="适用工厂模式的情景"></a>适用工厂模式的情景</h1><ul>
-<li>用户需要一个类的子类的实例，但不希望与该类的子类形成耦合。</li>
-<li>用户需要一个类的子类的实例，但用户不知道该类有哪些子类可用。</li>
+<h1 id="适用组合模式的情景"><a href="#适用组合模式的情景" class="headerlink" title="适用组合模式的情景"></a>适用组合模式的情景</h1><ul>
+<li>设计者需要给出一个算法的固定步骤，并将某些步骤的具体实现留给子类来实现。</li>
+<li>需要对代码进行重构，将各个子类公共行为提取出来集中到一个共同的父类中以避免代码重复。</li>
 </ul>
 
       
@@ -277,88 +311,10 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
   </div>
   
     
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
-        <p><span>发布时间:</span>2016年09月06日 - 21时43分</p>
-        <p><span>最后更新:</span>2016年09月11日 - 11时19分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/06/Java设计模式--工厂模式/" title="Java设计模式--工厂模式">http://yoursite.com/2016/09/06/Java设计模式--工厂模式/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/06/Java设计模式--工厂模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
 
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/09/07/Java设计模式--抽象工厂模式/">
-                    Java设计模式--抽象工厂模式
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/09/04/CSDN--Me/">
-                    CSDN--杜鲁门的博客
-                </a>
-            </div>
-        
-    </nav>
 
   
 </article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简单工厂方法模式-别名：虚拟构造"><span class="toc-number">1.</span> <span class="toc-text">简单工厂方法模式(别名：虚拟构造)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mediator-Pattern-Another-Name-Virtual-Constructor"><span class="toc-number">2.</span> <span class="toc-text">Mediator Pattern(Another Name: Virtual Constructor)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Product的抽象类Animals-java"><span class="toc-number">5.1.</span> <span class="toc-text">Product的抽象类Animals.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类Dog-java"><span class="toc-number">5.2.</span> <span class="toc-text">ConcreteProduct的实现类Dog.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteProduct的实现类Cat-java"><span class="toc-number">5.3.</span> <span class="toc-text">ConcreteProduct的实现类Cat.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creator的抽象类Creator-java"><span class="toc-number">5.4.</span> <span class="toc-text">Creator的抽象类Creator.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteCreator的实现类DogCreator-java"><span class="toc-number">5.5.</span> <span class="toc-text">ConcreteCreator的实现类DogCreator.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcreteCreator的实现类CatCreator-java"><span class="toc-number">5.6.</span> <span class="toc-text">ConcreteCreator的实现类CatCreator.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.7.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工厂模式的优点"><span class="toc-number">6.</span> <span class="toc-text">工厂模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用工厂模式的情景"><span class="toc-number">7.</span> <span class="toc-text">适用工厂模式的情景</span></a></li></ol>
-</div>
-<style>
-    .left-col .switch-btn {
-        display: none;
-    }
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
-
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-            $(".switch-btn, .switch-area").fadeOut(300);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-            $(".switch-btn, .switch-area").fadeIn(500);
-        }
-    })
-
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-        $(".switch-btn, .switch-area").show();
-    }
-</script>
-
-
 
 
 <div class="share">
@@ -383,46 +339,6 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
 
 
 
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/09/07/Java设计模式--抽象工厂模式/" title="上一篇: Java设计模式--抽象工厂模式">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2016/09/04/CSDN--Me/" title="下一篇: CSDN--杜鲁门的博客">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--模板方法模式/">Java设计模式--模板方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--代理模式/">Java设计模式--代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/16/Java设计模式--访问者模式/">Java设计模式--访问者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/14/Java设计模式--解释器模式/">Java设计模式--解释器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--备忘录模式/">Java设计模式--备忘录模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--享元模式/">Java设计模式--享元模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--状态模式/">Java设计模式--状态模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/Java设计模式--适配器模式/">Java设计模式--适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--观察者模式/">Java设计模式--观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/hello-world/">Hello World</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#toc, .switch-btn, .switch-area").toggle();
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-                $(".switch-btn, .switch-area").fadeToggle(300);
-            }
-        })
-    </script>
-
-
-
 
     
         <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -432,7 +348,7 @@ Mediator Pattern(Another Name: Virtual Constructor)Define an interface for creat
             mathjax: true,
             animate: true,
             isHome: false,
-            isPost: true,
+            isPost: false,
             isArchive: false,
             isTag: false,
             isCategory: false,

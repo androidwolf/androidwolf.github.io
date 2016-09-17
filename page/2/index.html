@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/代理模式/" style="font-size: 10px;">代理模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/模板方法模式/" style="font-size: 10px;">模板方法模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/访问者模式/" style="font-size: 10px;">访问者模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
                     </div>
                 </section>
                 
@@ -205,6 +205,304 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Java设计模式--装饰模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/08/Java设计模式--装饰模式/" class="article-date">
+      <time datetime="2016-09-07T16:25:06.000Z" itemprop="datePublished">2016-09-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="装饰模式-别名：包装类"><a href="#装饰模式-别名：包装类" class="headerlink" title="装饰模式(别名：包装类)"></a>装饰模式(别名：包装类)</h1><p>动态地给对象添加一些额外的职责。就功能来说装饰模式相比生成子类更为灵活。</p>
+<h1 id="Decorator-Pattern-Another-Name-Wrapper"><a href="#Decorator-Pattern-Another-Name-Wrapper" class="headerlink" title="Decorator Pattern(Another Name: Wrapper)"></a>Decorator Pattern(Another Name: Wrapper)</h1><p>Attach additional responsibilities to an object dynamically。Decorators provide a flexible alternative to subclassing for extending functionality.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://www.z4a.net/images/2016/09/07/1eda8c.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>装饰模式的结构中包括四个角色。</p>
+<ul>
+<li>抽象组件（Component）：抽象组件是一个抽象类或者接口。抽象组件定义了“被装饰者”需要进行“装饰”的方法。</li>
+<li>具体产品（ConcreteComponent）：具体组件是抽象组件的一个子类，具体组件的实例称为“被装饰者”。</li>
+<li>装饰（Decorator）：装饰也是抽象组件的一个子类，但装饰还包含一个抽象组件声明的变量以保存“被装饰者”的引用。装饰可以是抽象类也可以是一个非抽象类，如果是非抽象类，那么该类的实例称作“装饰者”。</li>
+<li>具体装饰（ConcreteDecorator）：具体装饰是装饰的一个非抽象子类，具体装饰的实例称作“装饰者”。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Component的接口类Bird-java"><a href="#Component的接口类Bird-java" class="headerlink" title="Component的接口类Bird.java"></a>Component的接口类Bird.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Decorator;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Bird</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">fly</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteComponent的实现类Sparrow-java"><a href="#ConcreteComponent的实现类Sparrow-java" class="headerlink" title="ConcreteComponent的实现类Sparrow.java"></a>ConcreteComponent的实现类Sparrow.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Decorator;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sparrow</span> <span class="keyword">implements</span> <span class="title">Bird</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> DISTANCE = <span class="number">100</span>;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> DISTANCE;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Decorator的接口类Decorator-java"><a href="#Decorator的接口类Decorator-java" class="headerlink" title="Decorator的接口类Decorator.java"></a>Decorator的接口类Decorator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Decorator;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Decorator</span> <span class="keyword">implements</span> <span class="title">Bird</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> Bird bird;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Decorator</span><span class="params">(Bird bird)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.bird = bird;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteDecorator的实现类SparrowDecorator-java"><a href="#ConcreteDecorator的实现类SparrowDecorator-java" class="headerlink" title="ConcreteDecorator的实现类SparrowDecorator.java"></a>ConcreteDecorator的实现类SparrowDecorator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Decorator;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SparrowDecorator</span> <span class="keyword">extends</span> <span class="title">Decorator</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> DISTANCE = <span class="number">50</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SparrowDecorator</span><span class="params">(Bird bird)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(bird);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> bird.fly() + elefly();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">elefly</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> DISTANCE;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Decorator;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Bird sparrow = <span class="keyword">new</span> Sparrow();</div><div class="line">		System.out.println(sparrow.fly());</div><div class="line">		Bird sparrowDecorator = <span class="keyword">new</span> SparrowDecorator(sparrow);</div><div class="line">		System.out.println(sparrowDecorator.fly());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="装饰模式的优点"><a href="#装饰模式的优点" class="headerlink" title="装饰模式的优点"></a>装饰模式的优点</h1><ul>
+<li>被装饰者和装饰者是松耦合关系。由于装饰（Decorator）仅仅依赖于抽象组件（Component），因此具体装饰只知道它要装饰的对象是抽象组件某一个子类的实例，但不需要知道是哪一个具体子类。</li>
+<li>装饰模式满足“开-闭原则”。不必修改具体组件，就可以增加新的针对该具体组件的具体装饰。</li>
+<li>可以使用多个具体装饰来装饰具体组件的实例。</li>
+</ul>
+<h1 id="适用装饰模式的情景"><a href="#适用装饰模式的情景" class="headerlink" title="适用装饰模式的情景"></a>适用装饰模式的情景</h1><ul>
+<li>程序希望动态地增强类的某个对象的功能，而又不影响到该类的其他对象。</li>
+<li>采用继承来增强对象功能不利于系统的扩展和维护。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/装饰模式/">装饰模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
+    <article id="post-Java设计模式--抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/07/Java设计模式--抽象工厂模式/" class="article-date">
+      <time datetime="2016-09-07T06:43:06.000Z" itemprop="datePublished">2016-09-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="抽象工厂模式-别名：配套"><a href="#抽象工厂模式-别名：配套" class="headerlink" title="抽象工厂模式(别名：配套)"></a>抽象工厂模式(别名：配套)</h1><p>提供一个创建一系列或相互依赖对象的接口，而无需指定它们具体的类。</p>
+<h1 id="Abstract-Factory-Pattern-Another-Name-Kit"><a href="#Abstract-Factory-Pattern-Another-Name-Kit" class="headerlink" title="Abstract Factory Pattern(Another Name: Kit)"></a>Abstract Factory Pattern(Another Name: Kit)</h1><p>Provide an interface for creating an families of related or dependent objects without specifying their concrete classes。</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://www.z4a.net/images/2016/09/07/1c4ffa.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>工厂方法模式的结构中包括四个角色。</p>
+<ul>
+<li>抽象产品（Product）：抽象类或接口，负责定义具体产品必须实现的方法。</li>
+<li>具体产品（Concrete Product）：具体产品是一个类，如果Product是一个抽象类，那么具体产品是Product的子类；如果Product是一个接口，那么具体产品去实现接口。</li>
+<li>构造者（Creator）：一个接口或者抽象类。构造者负责定义一个称作工厂方法的抽象方法，该方法返回具体产品类的实例。</li>
+<li>具体构造者（Concrete Creator）：具体构造者重写工厂方法使该方法返回具体产品的实例。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Product的接口类Firearms-java"><a href="#Product的接口类Firearms-java" class="headerlink" title="Product的接口类Firearms.java"></a>Product的接口类Firearms.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Firearms</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">fire</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteProduct的实现类Pistol-java"><a href="#ConcreteProduct的实现类Pistol-java" class="headerlink" title="ConcreteProduct的实现类Pistol.java"></a>ConcreteProduct的实现类Pistol.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pistol</span> <span class="keyword">implements</span> <span class="title">Firearms</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fire</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"手枪开火 "</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteProduct的实现类MachineGun-java"><a href="#ConcreteProduct的实现类MachineGun-java" class="headerlink" title="ConcreteProduct的实现类MachineGun.java"></a>ConcreteProduct的实现类MachineGun.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MachineGun</span> <span class="keyword">implements</span> <span class="title">Firearms</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fire</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"机关枪开火"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Product的接口类Bullet-java"><a href="#Product的接口类Bullet-java" class="headerlink" title="Product的接口类Bullet.java"></a>Product的接口类Bullet.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Bullet</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span>	String <span class="title">getName</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteProduct的实现类PistolBullet-java"><a href="#ConcreteProduct的实现类PistolBullet-java" class="headerlink" title="ConcreteProduct的实现类PistolBullet.java"></a>ConcreteProduct的实现类PistolBullet.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PistolBullet</span> <span class="keyword">implements</span> <span class="title">Bullet</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> String name = <span class="string">"手枪子弹"</span>;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteProduct的实现类MachineGunBullet-java"><a href="#ConcreteProduct的实现类MachineGunBullet-java" class="headerlink" title="ConcreteProduct的实现类MachineGunBullet.java"></a>ConcreteProduct的实现类MachineGunBullet.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MachineGunBullet</span> <span class="keyword">implements</span> <span class="title">Bullet</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> String name = <span class="string">"机关枪子弹"</span>;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Creator的接口类Armory-java"><a href="#Creator的接口类Armory-java" class="headerlink" title="Creator的接口类Armory.java"></a>Creator的接口类Armory.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Armory</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Firearms <span class="title">getFirearms</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Bullet <span class="title">getBullet</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteCreator的实现类PistolFactory-java"><a href="#ConcreteCreator的实现类PistolFactory-java" class="headerlink" title="ConcreteCreator的实现类PistolFactory.java"></a>ConcreteCreator的实现类PistolFactory.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PistolFactory</span> <span class="keyword">implements</span> <span class="title">Armory</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Firearms <span class="title">getFirearms</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Pistol();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Bullet <span class="title">getBullet</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> PistolBullet();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteCreator的实现类MachineGunFactory-java"><a href="#ConcreteCreator的实现类MachineGunFactory-java" class="headerlink" title="ConcreteCreator的实现类MachineGunFactory.java"></a>ConcreteCreator的实现类MachineGunFactory.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MachineGunFactory</span> <span class="keyword">implements</span> <span class="title">Armory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Firearms <span class="title">getFirearms</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> MachineGun();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Bullet <span class="title">getBullet</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> MachineGunBullet();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Kit-java"><a href="#测试类Kit-java" class="headerlink" title="测试类Kit.java"></a>测试类Kit.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Kit;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Kit</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		PistolFactory pf = <span class="keyword">new</span> PistolFactory();</div><div class="line">		System.out.println(pf.getBullet().getName());</div><div class="line">		pf.getFirearms().fire();</div><div class="line">		</div><div class="line">		MachineGunFactory mgf = <span class="keyword">new</span> MachineGunFactory();</div><div class="line">		System.out.println(mgf.getBullet().getName());</div><div class="line">		mgf.getFirearms().fire();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="抽象工厂模式的优点"><a href="#抽象工厂模式的优点" class="headerlink" title="抽象工厂模式的优点"></a>抽象工厂模式的优点</h1><ul>
+<li>抽象工厂模式可以为用户创建一系列相关的对象，使用户和创建这些对象的类脱耦。</li>
+<li>使用抽象工厂模式可以方便的为用户配置一系列对象。用户使用不同的具体工厂就能得到一组相关的对象，同时也能避免用户混到不同系列的对象中。</li>
+<li>在抽象工厂模式中，可以随时增加“具体工厂”为用户提供一组相关的对象。</li>
+</ul>
+<h1 id="适用抽象工厂模式的情景"><a href="#适用抽象工厂模式的情景" class="headerlink" title="适用抽象工厂模式的情景"></a>适用抽象工厂模式的情景</h1><ul>
+<li>系统需要为用户提供多个对象，但不希望用户直接使用new运算符实例化这些对象，即希望用户和创建对象的类脱耦。</li>
+<li>系统需要为用户提供多个相关的对象，以便用户联合使用它们，但又不希望用户来决定这些对象是如何关联的。</li>
+<li>系统需要为用户提供一系列对象，但只需要用户知道这些对象有哪些方法可用，不需要用户知道这些对象的创建过程。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/抽象工厂模式/">抽象工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
+  
+    <article id="post-Java设计模式--工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/06/Java设计模式--工厂模式/" class="article-date">
+      <time datetime="2016-09-06T13:43:06.000Z" itemprop="datePublished">2016-09-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="简单工厂方法模式-别名：虚拟构造"><a href="#简单工厂方法模式-别名：虚拟构造" class="headerlink" title="简单工厂方法模式(别名：虚拟构造)"></a>简单工厂方法模式(别名：虚拟构造)</h1><p>定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。</p>
+<h1 id="Mediator-Pattern-Another-Name-Virtual-Constructor"><a href="#Mediator-Pattern-Another-Name-Virtual-Constructor" class="headerlink" title="Mediator Pattern(Another Name: Virtual Constructor)"></a>Mediator Pattern(Another Name: Virtual Constructor)</h1><p>Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i4.buimg.com/4851/da172bacf211ec7f.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>工厂方法模式的结构中包括四个角色。</p>
+<ul>
+<li>抽象产品（Product）：抽象类或接口，负责定义具体产品必须实现的方法。</li>
+<li>具体产品（Concrete Product）：具体产品是一个类，如果Product是一个抽象类，那么具体产品是Product的子类；如果Product是一个接口，那么具体产品去实现接口。</li>
+<li>构造者（Creator）：一个接口或者抽象类。构造者负责定义一个称作工厂方法的抽象方法，该方法返回具体产品类的实例。</li>
+<li>具体构造者（Concrete Creator）：具体构造者重写工厂方法使该方法返回具体产品的实例。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Product的抽象类Animals-java"><a href="#Product的抽象类Animals-java" class="headerlink" title="Product的抽象类Animals.java"></a>Product的抽象类Animals.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animals</span> </span>&#123;</div><div class="line">	String name;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteProduct的实现类Dog-java"><a href="#ConcreteProduct的实现类Dog-java" class="headerlink" title="ConcreteProduct的实现类Dog.java"></a>ConcreteProduct的实现类Dog.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span> </span>&#123;</div><div class="line">		name = <span class="string">"狗"</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span> <span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(name + <span class="string">"是走"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteProduct的实现类Cat-java"><a href="#ConcreteProduct的实现类Cat-java" class="headerlink" title="ConcreteProduct的实现类Cat.java"></a>ConcreteProduct的实现类Cat.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animals</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Cat</span><span class="params">()</span> </span>&#123;</div><div class="line">		name = <span class="string">"猫"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(name + <span class="string">"是飞"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Creator的抽象类Creator-java"><a href="#Creator的抽象类Creator-java" class="headerlink" title="Creator的抽象类Creator.java"></a>Creator的抽象类Creator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Creator</span> </span>&#123;</div><div class="line">	Animals animal;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Animals <span class="title">getAnimal</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteCreator的实现类DogCreator-java"><a href="#ConcreteCreator的实现类DogCreator-java" class="headerlink" title="ConcreteCreator的实现类DogCreator.java"></a>ConcreteCreator的实现类DogCreator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Animals <span class="title">getAnimal</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Dog();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ConcreteCreator的实现类CatCreator-java"><a href="#ConcreteCreator的实现类CatCreator-java" class="headerlink" title="ConcreteCreator的实现类CatCreator.java"></a>ConcreteCreator的实现类CatCreator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Animals <span class="title">getAnimal</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Cat();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		DogCreator dog = <span class="keyword">new</span> DogCreator();</div><div class="line">		dog.getAnimal().move();</div><div class="line">		CatCreator cat = <span class="keyword">new</span> CatCreator();</div><div class="line">		cat.getAnimal().move();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="工厂模式的优点"><a href="#工厂模式的优点" class="headerlink" title="工厂模式的优点"></a>工厂模式的优点</h1><ul>
+<li>使用工厂模式可以让用户的代码和某个特定类的子类的代码解耦。</li>
+<li>工厂方法的使用用户不必知道它所使用的对象是怎么被创建的，只需要知道该对象有哪些方法即可。</li>
+</ul>
+<h1 id="适用工厂模式的情景"><a href="#适用工厂模式的情景" class="headerlink" title="适用工厂模式的情景"></a>适用工厂模式的情景</h1><ul>
+<li>用户需要一个类的子类的实例，但不希望与该类的子类形成耦合。</li>
+<li>用户需要一个类的子类的实例，但用户不知道该类有哪些子类可用。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工厂模式/">工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-CSDN--Me" class="article article-type-post" itemscope itemprop="blogPost">
   
