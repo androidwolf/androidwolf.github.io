@@ -8,30 +8,30 @@
   <meta name="description" content="桥接模式（别名：柄体模式）将抽象部分于它的实现部分分离，使它们都可以独立地变化。
 Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its implementation so that the two can vary independently.
 类图
-模式的结构与使用桥接方法模式的结构中包括两种角色。
+模式的结构与使用桥接模式的结构中包括四种角色。
 
-抽">
-<meta name="keywords">
-<meta property="og:type" content="website">
+抽象（">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java设计模式--桥接模式">
-<meta property="og:url" content="http://yoursite.com/Java设计模式--桥接模式.html">
+<meta property="og:url" content="http://yoursite.com/2016/09/17/Java设计模式--桥接模式/index.html">
 <meta property="og:site_name" content="起今知行 | 跨越者">
 <meta property="og:description" content="桥接模式（别名：柄体模式）将抽象部分于它的实现部分分离，使它们都可以独立地变化。
 Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its implementation so that the two can vary independently.
 类图
-模式的结构与使用桥接方法模式的结构中包括两种角色。
+模式的结构与使用桥接模式的结构中包括四种角色。
 
-抽">
+抽象（">
 <meta property="og:image" content="http://i1.piimg.com/4851/c1df39cd4c5e374b.png">
-<meta property="og:updated_time" content="2016-09-17T16:23:19.662Z">
+<meta property="og:image" content="http://i2.buimg.com/4851/c22c3dbeac863c85.png">
+<meta property="og:updated_time" content="2016-09-18T09:23:57.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式--桥接模式">
 <meta name="twitter:description" content="桥接模式（别名：柄体模式）将抽象部分于它的实现部分分离，使它们都可以独立地变化。
 Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its implementation so that the two can vary independently.
 类图
-模式的结构与使用桥接方法模式的结构中包括两种角色。
+模式的结构与使用桥接模式的结构中包括四种角色。
 
-抽">
+抽象（">
 <meta name="twitter:image" content="http://i1.piimg.com/4851/c1df39cd4c5e374b.png">
   
     <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
@@ -220,10 +220,10 @@ Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its i
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java设计模式--桥接模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/Java设计模式--桥接模式.html" class="article-date">
+      <a href="/2016/09/17/Java设计模式--桥接模式/" class="article-date">
       <time datetime="2016-09-17T07:15:06.000Z" itemprop="datePublished">2016-09-17</time>
 </a>
     </div>
@@ -248,7 +248,7 @@ Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its i
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/">undefined</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/">undefined</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/">undefined</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桥接模式/">桥接模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -258,56 +258,24 @@ Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its i
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
-
-
-          
         <h1 id="桥接模式（别名：柄体模式）"><a href="#桥接模式（别名：柄体模式）" class="headerlink" title="桥接模式（别名：柄体模式）"></a>桥接模式（别名：柄体模式）</h1><p>将抽象部分于它的实现部分分离，使它们都可以独立地变化。</p>
 <h1 id="Bridge-Pattern（Another-Name：Handle-Body）"><a href="#Bridge-Pattern（Another-Name：Handle-Body）" class="headerlink" title="Bridge Pattern（Another Name：Handle-Body）"></a>Bridge Pattern（Another Name：Handle-Body）</h1><p>Decouple an abstraction from its implementation so that the two can vary independently.</p>
 <h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i1.piimg.com/4851/c1df39cd4c5e374b.png" alt=""></p>
-<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>桥接方法模式的结构中包括两种角色。</p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>桥接模式的结构中包括四种角色。</p>
 <ul>
-<li>抽象模板（Abstract Template）：抽象模板是一个抽象类。抽象模板定义了若干个方法以表示一个算法的各个步骤，这些方法中有抽象方法也有非抽象方法，其中的抽象方法称作原语操作(Primitive Operation)。重要的一点是，抽象模板中还定义了一个称作桥接的方法，该方法不仅包含有抽象模板中表示算法步骤的方法调用，而且也可以包含有定义在抽象模板中的其他对象的方法调用，即桥接定义了算法的骨架。</li>
-<li>具体模板（Concrete Template）：具体模板是抽象模板的子类，实现抽象模板中的原语操作。</li>
+<li>抽象（Abstraction）：是一个抽象类，该抽象类含有Implementor声明的变量，即维护一个Implementor类型对象。</li>
+<li>实现者（Implementor）：实现者角色是一个接口（抽象类），该接口（抽象类）中的方法不一定与Abstraction类中的方法一致。Implementor接口（抽象类）负责定义基本操作，而Abstraction类负责定义基于这些基本操作的较高层次的操作。</li>
+<li>细化抽象（Refined Abstration）：细化抽象是抽象角色的一个子类，该子类在重写（覆盖）抽象角色中的抽象方法时，在给出一些必要的操作后，将委托所维护Implementor类型对象调用相应的方法。</li>
+<li>具体实现者（Concrete Implementor）：具体实现者是实现（扩展）Implementor接口（抽象类）的类。</li>
 </ul>
 <h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Abstract-Template的抽象类CCTV-java"><a href="#Abstract-Template的抽象类CCTV-java" class="headerlink" title="Abstract Template的抽象类CCTV.java"></a>Abstract Template的抽象类CCTV.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JPanel;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CCTV</span> <span class="keyword">extends</span> <span class="title">JPanel</span> </span>&#123;</div><div class="line">	Program programMaker;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">makeProgram</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Abstract-Template的实现类CCTV5-java"><a href="#Abstract-Template的实现类CCTV5-java" class="headerlink" title="Abstract Template的实现类CCTV5.java"></a>Abstract Template的实现类CCTV5.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.BorderLayout;</div><div class="line"><span class="keyword">import</span> java.awt.Font;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JLabel;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CCTV5</span> <span class="keyword">extends</span> <span class="title">CCTV</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">	JLabel showFilm;</div><div class="line">	Thread thread;</div><div class="line">	ArrayList&lt;String&gt; content;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CCTV5</span><span class="params">(Program program)</span> </span>&#123;</div><div class="line">		programMaker = program;</div><div class="line">		setLayout(<span class="keyword">new</span> BorderLayout());</div><div class="line">		showFilm = <span class="keyword">new</span> JLabel(<span class="string">"CCTV5频道"</span>);</div><div class="line">		showFilm.setFont(<span class="keyword">new</span> Font(<span class="string">""</span>, Font.BOLD, <span class="number">39</span>));</div><div class="line">		add(showFilm, BorderLayout.CENTER);</div><div class="line">		thread = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeProgram</span><span class="params">()</span> </span>&#123;</div><div class="line">		content = programMaker.makeTVProgram();</div><div class="line">		<span class="keyword">if</span> (!thread.isAlive()) &#123;</div><div class="line">			thread = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line">			thread.start();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; content.size(); i++) &#123;</div><div class="line">			showFilm.setText(content.get(i));</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				Thread.sleep(<span class="number">500</span>);</div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Abstract-Template的实现类CCTV6-java"><a href="#Abstract-Template的实现类CCTV6-java" class="headerlink" title="Abstract Template的实现类CCTV6.java"></a>Abstract Template的实现类CCTV6.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.BorderLayout;</div><div class="line"><span class="keyword">import</span> java.awt.Font;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JLabel;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CCTV6</span> <span class="keyword">extends</span> <span class="title">CCTV</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">	JLabel showFilm;</div><div class="line">	Thread thread;</div><div class="line">	ArrayList&lt;String&gt; content;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CCTV6</span><span class="params">(Program program)</span> </span>&#123;</div><div class="line">		programMaker = program;</div><div class="line">		setLayout(<span class="keyword">new</span> BorderLayout());</div><div class="line">		showFilm = <span class="keyword">new</span> JLabel(<span class="string">"CCTV6频道"</span>);</div><div class="line">		showFilm.setFont(<span class="keyword">new</span> Font(<span class="string">""</span>, Font.BOLD, <span class="number">39</span>));</div><div class="line">		add(showFilm, BorderLayout.CENTER);</div><div class="line">		thread = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeProgram</span><span class="params">()</span> </span>&#123;</div><div class="line">		content = programMaker.makeTVProgram();</div><div class="line">		<span class="keyword">if</span> (!thread.isAlive()) &#123;</div><div class="line">			thread = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line">			thread.start();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; content.size(); i++) &#123;</div><div class="line">			showFilm.setText(content.get(i));</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				Thread.sleep(<span class="number">500</span>);</div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Creator的接口类Program-java"><a href="#Creator的接口类Program-java" class="headerlink" title="Creator的接口类Program.java"></a>Creator的接口类Program.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Program</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">makeTVProgram</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="ConcreteCreator的实现类DogCreator-java"><a href="#ConcreteCreator的实现类DogCreator-java" class="headerlink" title="ConcreteCreator的实现类DogCreator.java"></a>ConcreteCreator的实现类DogCreator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Animals <span class="title">getAnimal</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Dog();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="ConcreteCreator的实现类CatCreator-java"><a href="#ConcreteCreator的实现类CatCreator-java" class="headerlink" title="ConcreteCreator的实现类CatCreator.java"></a>ConcreteCreator的实现类CatCreator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Animals <span class="title">getAnimal</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Cat();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> virtualconstructor;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		DogCreator dog = <span class="keyword">new</span> DogCreator();</div><div class="line">		dog.getAnimal().move();</div><div class="line">		CatCreator cat = <span class="keyword">new</span> CatCreator();</div><div class="line">		cat.getAnimal().move();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Implementor的接口类Program-java"><a href="#Implementor的接口类Program-java" class="headerlink" title="Implementor的接口类Program.java"></a>Implementor的接口类Program.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Program</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">makeTVProgram</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Implementor的实现类AthleticProgram-java"><a href="#Implementor的实现类AthleticProgram-java" class="headerlink" title="Implementor的实现类AthleticProgram.java"></a>Implementor的实现类AthleticProgram.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AthleticProgram</span> <span class="keyword">implements</span> <span class="title">Program</span> </span>&#123;</div><div class="line"></div><div class="line">	ArrayList&lt;String&gt; content;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AthleticProgram</span><span class="params">()</span> </span>&#123;</div><div class="line">		content = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">makeTVProgram</span><span class="params">()</span> </span>&#123;</div><div class="line">		content.clear();</div><div class="line">		content.add(<span class="string">"足球直播"</span>);</div><div class="line">		content.add(<span class="string">"篮球直播"</span>);</div><div class="line">		content.add(<span class="string">"羽毛球直播"</span>);</div><div class="line">		content.add(<span class="string">"兵乓球直播"</span>);</div><div class="line">		content.add(<span class="string">"直播结束"</span>);</div><div class="line">		<span class="keyword">return</span> content;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Implementor的实现类FilmProgram-java"><a href="#Implementor的实现类FilmProgram-java" class="headerlink" title="Implementor的实现类FilmProgram.java"></a>Implementor的实现类FilmProgram.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilmProgram</span> <span class="keyword">implements</span> <span class="title">Program</span> </span>&#123;</div><div class="line"></div><div class="line">	ArrayList&lt;String&gt; content;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FilmProgram</span><span class="params">()</span> </span>&#123;</div><div class="line">		content = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">makeTVProgram</span><span class="params">()</span> </span>&#123;</div><div class="line">		content.clear();</div><div class="line">		content.add(<span class="string">"惊天魔盗团"</span>);</div><div class="line">		content.add(<span class="string">"兵临城下"</span>);</div><div class="line">		content.add(<span class="string">"海芋恋"</span>);</div><div class="line">		content.add(<span class="string">"寒战"</span>);</div><div class="line">		content.add(<span class="string">"电影结束"</span>);</div><div class="line">		<span class="keyword">return</span> content;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Bridge;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.BorderLayout;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">import</span> javax.swing.JFrame;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">JFrame</span> </span>&#123;</div><div class="line"></div><div class="line">	JButton seeProgram;</div><div class="line">	CCTV cctv;</div><div class="line">	Program program;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Application</span><span class="params">(CCTV tv, Program program)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.cctv = tv;</div><div class="line">		<span class="keyword">this</span>.program = program;</div><div class="line">		add(cctv, BorderLayout.CENTER);</div><div class="line">		seeProgram = <span class="keyword">new</span> JButton(<span class="string">"看节目"</span>);</div><div class="line">		add(seeProgram, BorderLayout.SOUTH);</div><div class="line">		seeProgram.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</div><div class="line">			</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</div><div class="line">				cctv.makeProgram();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		setVisible(<span class="keyword">true</span>);</div><div class="line">		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Program program = <span class="keyword">new</span> AthleticProgram();</div><div class="line">		CCTV cctv = <span class="keyword">new</span> CCTV5(program);</div><div class="line">		Application application1 = <span class="keyword">new</span> Application(cctv, program);</div><div class="line">		application1.setBounds(<span class="number">10</span>, <span class="number">10</span>, <span class="number">200</span>, <span class="number">300</span>);</div><div class="line">		program = <span class="keyword">new</span> FilmProgram();</div><div class="line">		cctv = <span class="keyword">new</span> CCTV6(program);</div><div class="line">		Application application2 = <span class="keyword">new</span> Application(cctv, program);</div><div class="line">		application2.setBounds(<span class="number">220</span>, <span class="number">10</span>, <span class="number">200</span>, <span class="number">300</span>);	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="运行截图"><a href="#运行截图" class="headerlink" title="运行截图"></a>运行截图</h1><p><img src="http://i2.buimg.com/4851/c22c3dbeac863c85.png" alt=""></p>
 <h1 id="桥接模式的优点"><a href="#桥接模式的优点" class="headerlink" title="桥接模式的优点"></a>桥接模式的优点</h1><ul>
 <li>桥接模式分离实现与抽象，使抽象和实现可以独立的扩展。当修改实现的代码时，不影响抽象的代码，反之也一样。</li>
 <li>满足开闭-原则。抽象和实现者处于同层次，使系统可独立地扩展这两个层次。增加新的具体实现者，不需要修改细化抽象，反之增加新的细化抽象也不需要修改具体实现。</li>
@@ -324,10 +292,82 @@ Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its i
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/09/17/Java设计模式--桥接模式/">Java设计模式--桥接模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
+        <p><span>发布时间:</span>2016年09月17日 - 15时15分</p>
+        <p><span>最后更新:</span>2016年09月18日 - 17时23分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/17/Java设计模式--桥接模式/" title="Java设计模式--桥接模式">http://yoursite.com/2016/09/17/Java设计模式--桥接模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/17/Java设计模式--桥接模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/17/Java设计模式--模板方法模式/">
+                    Java设计模式--模板方法模式
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#桥接模式（别名：柄体模式）"><span class="toc-number">1.</span> <span class="toc-text">桥接模式（别名：柄体模式）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bridge-Pattern（Another-Name：Handle-Body）"><span class="toc-number">2.</span> <span class="toc-text">Bridge Pattern（Another Name：Handle-Body）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-Template的抽象类CCTV-java"><span class="toc-number">5.1.</span> <span class="toc-text">Abstract Template的抽象类CCTV.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-Template的实现类CCTV5-java"><span class="toc-number">5.2.</span> <span class="toc-text">Abstract Template的实现类CCTV5.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstract-Template的实现类CCTV6-java"><span class="toc-number">5.3.</span> <span class="toc-text">Abstract Template的实现类CCTV6.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementor的接口类Program-java"><span class="toc-number">5.4.</span> <span class="toc-text">Implementor的接口类Program.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementor的实现类AthleticProgram-java"><span class="toc-number">5.5.</span> <span class="toc-text">Implementor的实现类AthleticProgram.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementor的实现类FilmProgram-java"><span class="toc-number">5.6.</span> <span class="toc-text">Implementor的实现类FilmProgram.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.7.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行截图"><span class="toc-number">6.</span> <span class="toc-text">运行截图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#桥接模式的优点"><span class="toc-number">7.</span> <span class="toc-text">桥接模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用桥接模式的情景"><span class="toc-number">8.</span> <span class="toc-text">适用桥接模式的情景</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
 
 
 <div class="share">
@@ -352,6 +392,44 @@ Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its i
 
 
 
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/09/17/Java设计模式--模板方法模式/" title="下一篇: Java设计模式--模板方法模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--桥接模式/">Java设计模式--桥接模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--模板方法模式/">Java设计模式--模板方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--代理模式/">Java设计模式--代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/16/Java设计模式--访问者模式/">Java设计模式--访问者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/14/Java设计模式--解释器模式/">Java设计模式--解释器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--备忘录模式/">Java设计模式--备忘录模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--享元模式/">Java设计模式--享元模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--状态模式/">Java设计模式--状态模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/Java设计模式--适配器模式/">Java设计模式--适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--观察者模式/">Java设计模式--观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
 
     
         <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -361,7 +439,7 @@ Bridge Pattern（Another Name：Handle-Body）Decouple an abstraction from its i
             mathjax: true,
             animate: true,
             isHome: false,
-            isPost: false,
+            isPost: true,
             isArchive: false,
             isTag: false,
             isCategory: false,
