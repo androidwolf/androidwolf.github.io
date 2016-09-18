@@ -126,7 +126,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/代理模式/" style="font-size: 10px;">代理模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a> <a href="/tags/模板方法模式/" style="font-size: 10px;">模板方法模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/访问者模式/" style="font-size: 10px;">访问者模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/代理模式/" style="font-size: 10px;">代理模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a> <a href="/tags/模板方法模式/" style="font-size: 10px;">模板方法模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/组合模式/" style="font-size: 10px;">组合模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/访问者模式/" style="font-size: 10px;">访问者模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
                     </div>
                 </section>
                 
@@ -205,6 +205,103 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Java设计模式--适配器模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/10/Java设计模式--适配器模式/" class="article-date">
+      <time datetime="2016-09-10T00:53:06.000Z" itemprop="datePublished">2016-09-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/10/Java设计模式--适配器模式/">Java设计模式--适配器模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="适配器模式-别名：包装类"><a href="#适配器模式-别名：包装类" class="headerlink" title="适配器模式(别名：包装类)"></a>适配器模式(别名：包装类)</h1><p>将一个类的接口转换成客户希望的另外一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+<h1 id="Adapter-Pattern-Another-Name-wrapper"><a href="#Adapter-Pattern-Another-Name-wrapper" class="headerlink" title="Adapter Pattern(Another Name: wrapper)"></a>Adapter Pattern(Another Name: wrapper)</h1><p>Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interface.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://i2.buimg.com/4851/edeae7a9f92467c6.png" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>由于Java不支持多重继承，即一个类只能有一个父类，所以本节给出适配器模式的类图按着GOF著作的分类属于对象适配器模式的类图，不是类适配器模式的类图。<br>对象适配器模式的结构中包括三个角色。</p>
+<ul>
+<li>目标（Target）：目标是一个接口，该接口是客户想使用的接口。</li>
+<li>被适配者（Adaptee）：被适配者是一个已经存在的接口或抽象类，这个接口或抽象类需要适配。</li>
+<li>适配器（Adapter）：适配器是一个类，该类实现了目标接口并包含有被适配者的引用，即适配器的职责是对被适配者接口或是抽象类于目标接口进行适配。</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="Target的抽象类ThreeElectricOutlet-java"><a href="#Target的抽象类ThreeElectricOutlet-java" class="headerlink" title="Target的抽象类ThreeElectricOutlet.java"></a>Target的抽象类ThreeElectricOutlet.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Adapter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ThreeElectricOutlet</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">connectElectricCurrent</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Adaptee的接口类TwoElectriOutlet-java"><a href="#Adaptee的接口类TwoElectriOutlet-java" class="headerlink" title="Adaptee的接口类TwoElectriOutlet.java"></a>Adaptee的接口类TwoElectriOutlet.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Adapter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TwoElectricOutlet</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">connectElectricCurrent</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Adapter的实现类ThreeElectricAdapter-java"><a href="#Adapter的实现类ThreeElectricAdapter-java" class="headerlink" title="Adapter的实现类ThreeElectricAdapter.java"></a>Adapter的实现类ThreeElectricAdapter.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Adapter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreeElectricAdapter</span> <span class="keyword">implements</span> <span class="title">ThreeElectricOutlet</span> </span>&#123;</div><div class="line"></div><div class="line">	TwoElectricOutlet outlet;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ThreeElectricAdapter</span><span class="params">(TwoElectricOutlet outlet)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.outlet = outlet;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectElectricCurrent</span><span class="params">()</span> </span>&#123;</div><div class="line">		outlet.connectElectricCurrent();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试类Application-java"><a href="#测试类Application-java" class="headerlink" title="测试类Application.java"></a>测试类Application.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Adapter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ThreeElectricOutlet outlet;</div><div class="line">		Wash wash = <span class="keyword">new</span> Wash();</div><div class="line">		outlet = wash;</div><div class="line">		System.out.println(<span class="string">"使用三相插座接通电源:"</span>);</div><div class="line">		outlet.connectElectricCurrent();</div><div class="line">		TV tv = <span class="keyword">new</span> TV();</div><div class="line">		ThreeElectricAdapter adapter = <span class="keyword">new</span> ThreeElectricAdapter(tv);</div><div class="line">		outlet = adapter;</div><div class="line">		System.out.println(<span class="string">"使用三相插座接通电源:"</span>);</div><div class="line">		outlet.connectElectricCurrent();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Wash</span> <span class="keyword">implements</span> <span class="title">ThreeElectricOutlet</span> </span>&#123;</div><div class="line">	String name;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Wash</span><span class="params">()</span> </span>&#123;</div><div class="line">		name = <span class="string">"黄河洗衣机"</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Wash</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		name = s;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectElectricCurrent</span><span class="params">()</span> </span>&#123;</div><div class="line">		turnOn();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">turnOn</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(name + <span class="string">"开始洗衣服"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TV</span> <span class="keyword">implements</span> <span class="title">TwoElectricOutlet</span> </span>&#123;</div><div class="line"></div><div class="line">	String name;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TV</span><span class="params">()</span> </span>&#123;</div><div class="line">		name = <span class="string">"长江电视机"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TV</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		name = s;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectElectricCurrent</span><span class="params">()</span> </span>&#123;</div><div class="line">		turnOn();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">turnOn</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(name + <span class="string">"开始放节目"</span>);</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="适配器的适配程度"><a href="#适配器的适配程度" class="headerlink" title="适配器的适配程度"></a>适配器的适配程度</h1><h2 id="1-完全适配"><a href="#1-完全适配" class="headerlink" title="1.完全适配"></a>1.完全适配</h2><p>如果目标（Target）接口中的方法数目与配适配者（Adaptee）接口的方法数目相等，那么适配器（Adapter）可将被适配者接口（抽象类）与目标接口进行完全适配。</p>
+<h2 id="2-不完全匹配"><a href="#2-不完全匹配" class="headerlink" title="2.不完全匹配"></a>2.不完全匹配</h2><p>如果目标（Target）接口中的方法数目少于配适配者（Adaptee）接口的方法数目，那么适配器只能将被适配者接口与目标接口进行部分适配。</p>
+<h2 id="3-剩余适配"><a href="#3-剩余适配" class="headerlink" title="3.剩余适配"></a>3.剩余适配</h2><p>如果目标（Target）接口中的方法数目大于配适配者（Adaptee）接口的方法数目，那么适配器（Adapter）可将被适配者接口（抽象类）与目标接口进行完全适配，但必须将目标多余的方法给出用户允许的默认实现。</p>
+<h1 id="适配器模式的优点"><a href="#适配器模式的优点" class="headerlink" title="适配器模式的优点"></a>适配器模式的优点</h1><ul>
+<li>目标（Target）和被适配者（Adaptee）是完全解耦的关系。</li>
+<li>适配器模式满足“开-闭原则”。当添加一个实现Adaptee接口的新类时，不必修改Adapter，Adapter就能对这个新类的实例进行适配。</li>
+</ul>
+<h1 id="试用适配器模式的情景"><a href="#试用适配器模式的情景" class="headerlink" title="试用适配器模式的情景"></a>试用适配器模式的情景</h1><ul>
+<li>用户需要一个类的子类的实例，但不希望与该类的子类形成耦合。</li>
+<li>用户需要一个类的子类的实例，但用户不知道该类有哪些子类可用。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/适配器模式/">适配器模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: true,
+            isPost: false,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+
   
     <article id="post-Java设计模式--观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
   
