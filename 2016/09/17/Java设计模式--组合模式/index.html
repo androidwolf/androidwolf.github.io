@@ -15,7 +15,7 @@ Composite PatternCompose objects into tree structures to represent part-whole hi
 Composite PatternCompose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tgw1f7y30gvbtxj30hy0crdha.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1f7y3oc3j9lj30d604tjsc.jpg">
-<meta property="og:updated_time" content="2016-09-18T14:23:48.338Z">
+<meta property="og:updated_time" content="2016-09-19T00:45:49.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式--组合模式">
 <meta name="twitter:description" content="组合模式将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。
@@ -270,6 +270,7 @@ Composite PatternCompose objects into tree structures to represent part-whole hi
 <li>当想表示对象的部分-整体层次结构。</li>
 <li>希望用户用一致的方式处理个体对象和组合对象。</li>
 </ul>
+<h1 id="下载源码请到"><a href="#下载源码请到" class="headerlink" title="下载源码请到"></a>下载源码请到</h1><p><a href="https://github.com/androidwolf" target="_blank" rel="external">MyGitHub</a></p>
 
       
     </div>
@@ -281,7 +282,7 @@ Composite PatternCompose objects into tree structures to represent part-whole hi
         <p><span>本文标题:</span><a href="/2016/09/17/Java设计模式--组合模式/">Java设计模式--组合模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
         <p><span>发布时间:</span>2016年09月17日 - 17时33分</p>
-        <p><span>最后更新:</span>2016年09月18日 - 22时23分</p>
+        <p><span>最后更新:</span>2016年09月19日 - 08时45分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/09/17/Java设计模式--组合模式/" title="Java设计模式--组合模式">http://yoursite.com/2016/09/17/Java设计模式--组合模式/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/17/Java设计模式--组合模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -311,7 +312,7 @@ Composite PatternCompose objects into tree structures to represent part-whole hi
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#组合模式"><span class="toc-number">1.</span> <span class="toc-text">组合模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Composite-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Composite Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Component的接口类MilitaryPerson-java"><span class="toc-number">5.1.</span> <span class="toc-text">Component的接口类MilitaryPerson.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Composite的实现类MilitaryOfficer-java"><span class="toc-number">5.2.</span> <span class="toc-text">Composite的实现类MilitaryOfficer.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leaf的实现类MilitarySoldier-java"><span class="toc-number">5.3.</span> <span class="toc-text">Leaf的实现类MilitarySoldier.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算工资的工具类ComputerSalary-java"><span class="toc-number">5.4.</span> <span class="toc-text">计算工资的工具类ComputerSalary.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.5.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行效果图"><span class="toc-number">6.</span> <span class="toc-text">执行效果图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组合模式的优点"><span class="toc-number">7.</span> <span class="toc-text">组合模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用组合模式的情景"><span class="toc-number">8.</span> <span class="toc-text">适用组合模式的情景</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#组合模式"><span class="toc-number">1.</span> <span class="toc-text">组合模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Composite-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Composite Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Component的接口类MilitaryPerson-java"><span class="toc-number">5.1.</span> <span class="toc-text">Component的接口类MilitaryPerson.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Composite的实现类MilitaryOfficer-java"><span class="toc-number">5.2.</span> <span class="toc-text">Composite的实现类MilitaryOfficer.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leaf的实现类MilitarySoldier-java"><span class="toc-number">5.3.</span> <span class="toc-text">Leaf的实现类MilitarySoldier.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算工资的工具类ComputerSalary-java"><span class="toc-number">5.4.</span> <span class="toc-text">计算工资的工具类ComputerSalary.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.5.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行效果图"><span class="toc-number">6.</span> <span class="toc-text">执行效果图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组合模式的优点"><span class="toc-number">7.</span> <span class="toc-text">组合模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用组合模式的情景"><span class="toc-number">8.</span> <span class="toc-text">适用组合模式的情景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载源码请到"><span class="toc-number">9.</span> <span class="toc-text">下载源码请到</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

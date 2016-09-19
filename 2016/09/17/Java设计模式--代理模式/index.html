@@ -23,7 +23,7 @@ Proxy PatternProvide a surrogate or placeholder for another object to control ac
 抽象主题（Subject）：抽象主题是一个接口，该接口是对象和它的代理所共用的接口，即是RealSu">
 <meta property="og:image" content="http://i2.buimg.com/4851/c272a00cd9ca21fb.png">
 <meta property="og:image" content="http://i2.buimg.com/4851/21f377b981f39c9d.png">
-<meta property="og:updated_time" content="2016-09-17T15:59:33.809Z">
+<meta property="og:updated_time" content="2016-09-19T00:45:21.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式--代理模式">
 <meta name="twitter:description" content="代理模式为其他对象提供一种代理以控制对这个对象的访问。
@@ -281,6 +281,7 @@ Proxy PatternProvide a surrogate or placeholder for another object to control ac
 <li>用户需要一个类的子类的实例，但不希望与该类的子类形成耦合。</li>
 <li>用户需要一个类的子类的实例，但用户不知道该类有哪些子类可用。</li>
 </ul>
+<h1 id="下载源码请到"><a href="#下载源码请到" class="headerlink" title="下载源码请到"></a>下载源码请到</h1><p><a href="https://github.com/androidwolf" target="_blank" rel="external">MyGitHub</a></p>
 
       
     </div>
@@ -292,7 +293,7 @@ Proxy PatternProvide a surrogate or placeholder for another object to control ac
         <p><span>本文标题:</span><a href="/2016/09/17/Java设计模式--代理模式/">Java设计模式--代理模式</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
         <p><span>发布时间:</span>2016年09月17日 - 09时53分</p>
-        <p><span>最后更新:</span>2016年09月17日 - 23时59分</p>
+        <p><span>最后更新:</span>2016年09月19日 - 08时45分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/09/17/Java设计模式--代理模式/" title="Java设计模式--代理模式">http://yoursite.com/2016/09/17/Java设计模式--代理模式/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/17/Java设计模式--代理模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -328,7 +329,7 @@ Proxy PatternProvide a surrogate or placeholder for another object to control ac
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式"><span class="toc-number">1.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Proxy-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Proxy Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Subject的接口类Geometry-java"><span class="toc-number">5.1.</span> <span class="toc-text">Subject的接口类Geometry.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RealSubject的实现类Triangle-java"><span class="toc-number">5.2.</span> <span class="toc-text">RealSubject的实现类Triangle.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxy的实现类TriangleProxy-java"><span class="toc-number">5.3.</span> <span class="toc-text">Proxy的实现类TriangleProxy.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.4.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行效果图"><span class="toc-number">6.</span> <span class="toc-text">执行效果图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程代理"><span class="toc-number">7.</span> <span class="toc-text">远程代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式的优点"><span class="toc-number">8.</span> <span class="toc-text">代理模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用代理模式的情景"><span class="toc-number">9.</span> <span class="toc-text">适用代理模式的情景</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式"><span class="toc-number">1.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Proxy-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Proxy Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">5.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Subject的接口类Geometry-java"><span class="toc-number">5.1.</span> <span class="toc-text">Subject的接口类Geometry.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RealSubject的实现类Triangle-java"><span class="toc-number">5.2.</span> <span class="toc-text">RealSubject的实现类Triangle.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxy的实现类TriangleProxy-java"><span class="toc-number">5.3.</span> <span class="toc-text">Proxy的实现类TriangleProxy.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试类Application-java"><span class="toc-number">5.4.</span> <span class="toc-text">测试类Application.java</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行效果图"><span class="toc-number">6.</span> <span class="toc-text">执行效果图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#远程代理"><span class="toc-number">7.</span> <span class="toc-text">远程代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式的优点"><span class="toc-number">8.</span> <span class="toc-text">代理模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用代理模式的情景"><span class="toc-number">9.</span> <span class="toc-text">适用代理模式的情景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载源码请到"><span class="toc-number">10.</span> <span class="toc-text">下载源码请到</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
