@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java设计模式--总结 | 起今知行 | 跨越者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计模式是从许多优秀的软件系统中总结出成功的可复用的设计方案。设计模式一定是将简单的东西复杂化，哈哈哈，是不是矛盾，其实不然，扩展性大大增强。
+什么是框架框架不是模式，框架是针对某个领域，提供用于开发应用系统的类的集合，程序设计者可以使用框架提供的类设计一个应用程序，而且在设计应用程序时可以针对特定的问题使用某个模式。1.层次不同。模式比框架更抽象，模式是在某种特定环境中，针对一个软件设计出现的问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java设计模式--总结">
+<meta property="og:url" content="http://yoursite.com/2016/09/25/设计模式总结/index.html">
+<meta property="og:site_name" content="起今知行 | 跨越者">
+<meta property="og:description" content="设计模式是从许多优秀的软件系统中总结出成功的可复用的设计方案。设计模式一定是将简单的东西复杂化，哈哈哈，是不是矛盾，其实不然，扩展性大大增强。
+什么是框架框架不是模式，框架是针对某个领域，提供用于开发应用系统的类的集合，程序设计者可以使用框架提供的类设计一个应用程序，而且在设计应用程序时可以针对特定的问题使用某个模式。1.层次不同。模式比框架更抽象，模式是在某种特定环境中，针对一个软件设计出现的问">
+<meta property="og:image" content="http://p1.bqimg.com/4851/595ece72ffcd9acb.png">
+<meta property="og:image" content="http://p1.bqimg.com/4851/22f9295218873108.png">
+<meta property="og:updated_time" content="2016-09-25T16:31:40.845Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java设计模式--总结">
+<meta name="twitter:description" content="设计模式是从许多优秀的软件系统中总结出成功的可复用的设计方案。设计模式一定是将简单的东西复杂化，哈哈哈，是不是矛盾，其实不然，扩展性大大增强。
+什么是框架框架不是模式，框架是针对某个领域，提供用于开发应用系统的类的集合，程序设计者可以使用框架提供的类设计一个应用程序，而且在设计应用程序时可以针对特定的问题使用某个模式。1.层次不同。模式比框架更抽象，模式是在某种特定环境中，针对一个软件设计出现的问">
+<meta name="twitter:image" content="http://p1.bqimg.com/4851/595ece72ffcd9acb.png">
+  
+    <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/me.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">yxx</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">知我者谓我心忧，不知我者谓我何求</p>
+        
+        
+        <form><input type="text" class="search" placeholder=" Search..."></form>
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="#" title="Email"></a></li>
+                            
+                                <li id="新浪微博"><a class="新浪微博" target="_blank" href="/weibo" title="新浪微博"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/GitHub" title="GitHub"></a></li>
+                            
+                                <li id="微信"><a class="微信" target="_blank" href="/Wechat" title="微信"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/中介者模式/" style="font-size: 10px;">中介者模式</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/代理模式/" style="font-size: 10px;">代理模式</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原型模式/" style="font-size: 10px;">原型模式</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/外观模式/" style="font-size: 10px;">外观模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a> <a href="/tags/模板方法模式/" style="font-size: 10px;">模板方法模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/生成器模式/" style="font-size: 10px;">生成器模式</a> <a href="/tags/策略模式/" style="font-size: 10px;">策略模式</a> <a href="/tags/组合模式/" style="font-size: 10px;">组合模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/访问者模式/" style="font-size: 10px;">访问者模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://androidwolf.github.io/">Me</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/androidwolf">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/bug_moving">CSND</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱谈天跨地的秀秀</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">yxx</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/me.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">yxx</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">知我者谓我心忧，不知我者谓我何求</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="#" title="Email"></a></li>
+                            
+                                <li id="新浪微博"><a class="新浪微博" target="_blank" href="/weibo" title="新浪微博"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/GitHub" title="GitHub"></a></li>
+                            
+                                <li id="微信"><a class="微信" target="_blank" href="/Wechat" title="微信"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-设计模式总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/25/设计模式总结/" class="article-date">
+      <time datetime="2016-09-25T02:01:06.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java设计模式--总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>设计模式是从许多优秀的软件系统中总结出成功的可复用的设计方案。设计模式一定是将简单的东西复杂化，哈哈哈，是不是矛盾，其实不然，扩展性大大增强。</p>
+<h1 id="什么是框架"><a href="#什么是框架" class="headerlink" title="什么是框架"></a>什么是框架</h1><p>框架不是模式，框架是针对某个领域，提供用于开发应用系统的类的集合，程序设计者可以使用框架提供的类设计一个应用程序，而且在设计应用程序时可以针对特定的问题使用某个模式。<br>1.层次不同。模式比框架更抽象，模式是在某种特定环境中，针对一个软件设计出现的问题而给出的可复用的解决方案，不能向使用者提供可以直接使用的类，设计模式只有在被设计人员使用时才能表示为代码。框架和模式不同，它不是一种可复用的设计方案，它是由可用于设计解决某个问题的一些类组成的集合，程序设计人员通过使用框架提供的类或扩展框架提供的类进行应用程序的设计。<br>2.范围不同。模式本质上是逻辑概念，以概念的形式而存在，模式所描述的方案独立于编程语言。框架的应用很具体，它们不是以概念的形式而存在，而是以具体的软件组织而存在。<br>3.相互关系。一个框架往往包括很多个设计模式，它们是面向对象系统获得最大复用的方式，较大的面向对象应用会由多层彼此合作的框架组成。</p>
+<h1 id="面向对象的基本原则"><a href="#面向对象的基本原则" class="headerlink" title="面向对象的基本原则"></a>面向对象的基本原则</h1><h2 id="面向抽象原则"><a href="#面向抽象原则" class="headerlink" title="面向抽象原则"></a>面向抽象原则</h2><h3 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h3><p>1.抽象类<br>抽象类具有如下特点：</p>
+<ul>
+<li>抽象类中可以有abstract方法，也可以有非abstract方法。</li>
+<li>抽象类不能用new运算符创建对象。</li>
+<li>如果一个非抽象类是某个抽象类的子类，那么它必须重写父类的abstract方法。</li>
+<li>作为上转型对象。其实就是子类对象指向父类引用。</li>
+</ul>
+<p>2.接口<br>接口具有如下特点：</p>
+<ul>
+<li>接口中只可以有public权限的abstract方法，不能有非abstract方法。</li>
+<li>接口由类去实现，实现全部方法。</li>
+<li>接口回调。其实就是子类对象指向父类引用。</li>
+</ul>
+<h3 id="面向抽象"><a href="#面向抽象" class="headerlink" title="面向抽象"></a>面向抽象</h3><p>所谓面向抽象编程，是指当设计一个类时，不让该类面向具体的类，而是面向抽象类或接口，即所设计类中的重要数据是抽象类或接口声明的变量。</p>
+<h2 id="开-闭原则"><a href="#开-闭原则" class="headerlink" title="开-闭原则"></a>开-闭原则</h2><p>所谓“开-闭原则”（Open-Closed Principle）就是让设计对扩展开放，对修改关闭。实际上这句话的本质就是指当一个设计中增加新的模块时，不需要修改现有的模块。</p>
+<h2 id="多用组合少用继承原则"><a href="#多用组合少用继承原则" class="headerlink" title="多用组合少用继承原则"></a>多用组合少用继承原则</h2><p>之所以提倡多用组合，少用继承，是因为在许多设计中，人们希望系统的类之间尽量是低耦合的关系，而不希望是强耦合关系。即在许多情况下需要避开继承的缺点，而需要组合的优点。在装饰模式，策略模式以及中介者模式中都有体现。</p>
+<h2 id="高内聚-低耦合原则"><a href="#高内聚-低耦合原则" class="headerlink" title="高内聚-低耦合原则"></a>高内聚-低耦合原则</h2><p>如果类中的方法是一组相关的行为，则称该类时高内聚的，反之称为低内聚的。高内聚便于维护，而低内聚不利于类的维护。</p>
+<h1 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h1><p>创建型模式涉及对象的实例化，这类模式的特点是，不让用户代码依赖于对象的创建或排列方式，避免用户直接使用new运算符创建对象。</p>
+<h2 id="GOF的23中模式中的下列5种模式是属于创建型的模式"><a href="#GOF的23中模式中的下列5种模式是属于创建型的模式" class="headerlink" title="GOF的23中模式中的下列5种模式是属于创建型的模式"></a>GOF的23中模式中的下列5种模式是属于创建型的模式</h2><ul>
+<li>工厂方法模式：定义了一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。</li>
+<li>抽象工厂模式：提供一个创建一系列或相互依赖对象的接口，而无须制定它们具体的类。</li>
+<li>生成器模式：将一个复杂对象的创建于它的表示分离，使得同样的构建过程可以创建不同的表示。</li>
+<li>原型模式：用原型实例制定创建对象的种类，并且通过复制这些原型创建新的对象。</li>
+<li>单件模式：保证一个类仅有一个实例，并提供一个访问它的全局访问点。</li>
+</ul>
+<h1 id="行为型模式"><a href="#行为型模式" class="headerlink" title="行为型模式"></a>行为型模式</h1><p>行为型模式涉及怎样合理地涉及对象之间的交互通信，以及怎样合理为对象分配职责，让设计富有弹性，易维护，易复用。</p>
+<h2 id="GOF的23中模式中的下列11种模式是属于创建型模式。"><a href="#GOF的23中模式中的下列11种模式是属于创建型模式。" class="headerlink" title="GOF的23中模式中的下列11种模式是属于创建型模式。"></a>GOF的23中模式中的下列11种模式是属于创建型模式。</h2><ul>
+<li>责任链模式：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</li>
+<li>命令模式：将一个请求封装为一个对象，从而可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。</li>
+<li>解释器模式：给定一个语言，定义它文法的一种表示，并定义了一个解释器，这个解释器使用该表示来解释语言中的句子。</li>
+<li>迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。</li>
+<li>中介者模式：用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显示地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。</li>
+<li>备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样以后就可将该对象恢复到原先保存的状态。</li>
+<li>观察者模式：定义对象间的一种一对多的依赖关系，当一个对象的状态发生变化时，所有依赖于它的对象都得到通知并被自动更新。</li>
+<li>状态模式：允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。</li>
+<li>策略模式：定义了一系列算法，把它们一个个封装起来，并且使它们可以相互替换。本模式使算法可独立于使用它的客户而变化。</li>
+<li>模板方法模式：定义一个操作中算法的骨架，而将一些步骤延迟到子类中。模板方法使子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</li>
+<li>访问者模式：表示一个作用于某对象结构中的各个元素的操作。它可以在不改变各个元素的类的前提下定义作用于这些元素的新操作。</li>
+</ul>
+<h1 id="结构型模式"><a href="#结构型模式" class="headerlink" title="结构型模式"></a>结构型模式</h1><p>结构型模式涉及如何组合类和对象以形成更大的结构，和类有关的结构型模式涉及如何合理地使用继承机制；和对象有关的结构型模式涉及如何合理地使用对象组合机制。</p>
+<h2 id="GOF的23种设计模式中的下列7种模式是属于创建型模式。"><a href="#GOF的23种设计模式中的下列7种模式是属于创建型模式。" class="headerlink" title="GOF的23种设计模式中的下列7种模式是属于创建型模式。"></a>GOF的23种设计模式中的下列7种模式是属于创建型模式。</h2><ul>
+<li>适配器模式：将一个类的接口装换成客户希望的另一个接口。Adapter模式使原来由于接口不兼容而不能在一起工作的那些类可以一起工作。</li>
+<li>组合模式：将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。</li>
+<li>代理模式：为其他对象提供一种代理以控制对这个对象的访问。</li>
+<li>享元模式：运用共享技术有效地支持大量细粒度的对象。</li>
+<li>外观模式：为系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使这一子系统更加容易使用。</li>
+<li>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立地变化。</li>
+<li>装饰模式：动态地给对象添加一些额外的职责，就功能来说装饰模式相比生成子类更为灵活。</li>
+</ul>
+<p>简单的介绍下UML：</p>
+<ul>
+<li>类</li>
+<li>接口</li>
+<li>泛化关系 就是继承</li>
+<li>关联关系<br><img src="http://p1.bqimg.com/4851/595ece72ffcd9acb.png" alt=""></li>
+<li>依赖关系<br><img src="http://p1.bqimg.com/4851/22f9295218873108.png" alt=""></li>
+<li>实现关系</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/09/25/设计模式总结/">Java设计模式--总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
+        <p><span>发布时间:</span>2016年09月25日 - 10时01分</p>
+        <p><span>最后更新:</span>2016年09月26日 - 00时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/25/设计模式总结/" title="Java设计模式--总结">http://yoursite.com/2016/09/25/设计模式总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/25/设计模式总结/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/25/Java设计模式--命令模式/">
+                    Java设计模式--命令模式
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是框架"><span class="toc-number">1.</span> <span class="toc-text">什么是框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#面向对象的基本原则"><span class="toc-number">2.</span> <span class="toc-text">面向对象的基本原则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向抽象原则"><span class="toc-number">2.1.</span> <span class="toc-text">面向抽象原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象类和接口"><span class="toc-number">2.1.1.</span> <span class="toc-text">抽象类和接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向抽象"><span class="toc-number">2.1.2.</span> <span class="toc-text">面向抽象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开-闭原则"><span class="toc-number">2.2.</span> <span class="toc-text">开-闭原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多用组合少用继承原则"><span class="toc-number">2.3.</span> <span class="toc-text">多用组合少用继承原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高内聚-低耦合原则"><span class="toc-number">2.4.</span> <span class="toc-text">高内聚-低耦合原则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建型模式"><span class="toc-number">3.</span> <span class="toc-text">创建型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GOF的23中模式中的下列5种模式是属于创建型的模式"><span class="toc-number">3.1.</span> <span class="toc-text">GOF的23中模式中的下列5种模式是属于创建型的模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#行为型模式"><span class="toc-number">4.</span> <span class="toc-text">行为型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GOF的23中模式中的下列11种模式是属于创建型模式。"><span class="toc-number">4.1.</span> <span class="toc-text">GOF的23中模式中的下列11种模式是属于创建型模式。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结构型模式"><span class="toc-number">5.</span> <span class="toc-text">结构型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GOF的23种设计模式中的下列7种模式是属于创建型模式。"><span class="toc-number">5.1.</span> <span class="toc-text">GOF的23种设计模式中的下列7种模式是属于创建型模式。</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/09/25/Java设计模式--命令模式/" title="下一篇: Java设计模式--命令模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/设计模式总结/">Java设计模式--总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Java设计模式--命令模式/">Java设计模式--命令模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Java设计模式--外观模式/">Java设计模式--外观模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Java设计模式--中介者模式/">Java设计模式--中介者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/24/Java设计模式--生成器模式/">Java设计模式--生成器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/23/Java设计模式--策略模式/">Java设计模式--策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/19/Java设计模式--原型模式/">Java设计模式--原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/19/Java设计模式--单例模式/">Java设计模式--单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--组合模式/">Java设计模式--组合模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--桥接模式/">Java设计模式--桥接模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--模板方法模式/">Java设计模式--模板方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--代理模式/">Java设计模式--代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/16/Java设计模式--访问者模式/">Java设计模式--访问者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/14/Java设计模式--解释器模式/">Java设计模式--解释器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--备忘录模式/">Java设计模式--备忘录模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--享元模式/">Java设计模式--享元模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--状态模式/">Java设计模式--状态模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/Java设计模式--适配器模式/">Java设计模式--适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--观察者模式/">Java设计模式--观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: false,
+            isPost: true,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 yxx
+            </div>
+            <div class="footer-right">
+                <a href="https://androidwolf.github.io/" target="_blank" title="叶显秀的Github">yxx@版权所有，翻版绝对不究</a>
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

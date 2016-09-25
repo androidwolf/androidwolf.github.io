@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java设计模式--单例模式 | 起今知行 | 跨越者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="单例模式保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+Singleton PatternEnsure a class only has one instance, and provide a global point of access to it.
+类图
+模式的结构与使用单例方法模式的结构中包括一种角色。
+
+单件类（Singleton）：单件类只可以创建出一个实例。
+
+java中单例模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java设计模式--单例模式">
+<meta property="og:url" content="http://yoursite.com/2016/09/19/Java设计模式--单例模式/index.html">
+<meta property="og:site_name" content="起今知行 | 跨越者">
+<meta property="og:description" content="单例模式保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+Singleton PatternEnsure a class only has one instance, and provide a global point of access to it.
+类图
+模式的结构与使用单例方法模式的结构中包括一种角色。
+
+单件类（Singleton）：单件类只可以创建出一个实例。
+
+java中单例模">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1f7ymszqsfzj30cu08d3yz.jpg">
+<meta property="og:updated_time" content="2016-09-19T10:44:16.334Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java设计模式--单例模式">
+<meta name="twitter:description" content="单例模式保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+Singleton PatternEnsure a class only has one instance, and provide a global point of access to it.
+类图
+模式的结构与使用单例方法模式的结构中包括一种角色。
+
+单件类（Singleton）：单件类只可以创建出一个实例。
+
+java中单例模">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1f7ymszqsfzj30cu08d3yz.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="起今知行 | 跨越者" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/me.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">yxx</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">知我者谓我心忧，不知我者谓我何求</p>
+        
+        
+        <form><input type="text" class="search" placeholder=" Search..."></form>
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="#" title="Email"></a></li>
+                            
+                                <li id="新浪微博"><a class="新浪微博" target="_blank" href="/weibo" title="新浪微博"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/GitHub" title="GitHub"></a></li>
+                            
+                                <li id="微信"><a class="微信" target="_blank" href="/Wechat" title="微信"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/中介者模式/" style="font-size: 10px;">中介者模式</a> <a href="/tags/享元模式/" style="font-size: 10px;">享元模式</a> <a href="/tags/代理模式/" style="font-size: 10px;">代理模式</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原型模式/" style="font-size: 10px;">原型模式</a> <a href="/tags/命令模式/" style="font-size: 10px;">命令模式</a> <a href="/tags/备忘录模式/" style="font-size: 10px;">备忘录模式</a> <a href="/tags/外观模式/" style="font-size: 10px;">外观模式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/抽象工厂模式/" style="font-size: 10px;">抽象工厂模式</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a> <a href="/tags/模板方法模式/" style="font-size: 10px;">模板方法模式</a> <a href="/tags/状态模式/" style="font-size: 10px;">状态模式</a> <a href="/tags/生成器模式/" style="font-size: 10px;">生成器模式</a> <a href="/tags/策略模式/" style="font-size: 10px;">策略模式</a> <a href="/tags/组合模式/" style="font-size: 10px;">组合模式</a> <a href="/tags/装饰模式/" style="font-size: 10px;">装饰模式</a> <a href="/tags/观察者模式/" style="font-size: 10px;">观察者模式</a> <a href="/tags/解释器模式/" style="font-size: 10px;">解释器模式</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/访问者模式/" style="font-size: 10px;">访问者模式</a> <a href="/tags/责任链模式/" style="font-size: 10px;">责任链模式</a> <a href="/tags/适配器模式/" style="font-size: 10px;">适配器模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://androidwolf.github.io/">Me</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/androidwolf">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/bug_moving">CSND</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱谈天跨地的秀秀</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">yxx</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/me.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">yxx</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">知我者谓我心忧，不知我者谓我何求</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="#" title="Email"></a></li>
+                            
+                                <li id="新浪微博"><a class="新浪微博" target="_blank" href="/weibo" title="新浪微博"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/GitHub" title="GitHub"></a></li>
+                            
+                                <li id="微信"><a class="微信" target="_blank" href="/Wechat" title="微信"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Java设计模式--单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/19/Java设计模式--单例模式/" class="article-date">
+      <time datetime="2016-09-19T01:01:06.000Z" itemprop="datePublished">2016-09-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java设计模式--单例模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<h1 id="Singleton-Pattern"><a href="#Singleton-Pattern" class="headerlink" title="Singleton Pattern"></a>Singleton Pattern</h1><p>Ensure a class only has one instance, and provide a global point of access to it.</p>
+<h1 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h1><p><img src="http://ww1.sinaimg.cn/large/0060lm7Tgw1f7ymszqsfzj30cu08d3yz.jpg" alt=""></p>
+<h1 id="模式的结构与使用"><a href="#模式的结构与使用" class="headerlink" title="模式的结构与使用"></a>模式的结构与使用</h1><p>单例方法模式的结构中包括一种角色。</p>
+<ul>
+<li>单件类（Singleton）：单件类只可以创建出一个实例。</li>
+</ul>
+<h1 id="java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种："><a href="#java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种：" class="headerlink" title="java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种："></a>java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种：</h1><ul>
+<li>懒汉式单例</li>
+<li>饿汉式单例</li>
+<li>登记式单例</li>
+</ul>
+<h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><h2 id="懒汉式单例-java"><a href="#懒汉式单例-java" class="headerlink" title="懒汉式单例.java"></a>懒汉式单例.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Singleton;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> yxx</div><div class="line"> * 懒汉式单例类，在第一次调用的时候实例化自己</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton single = <span class="keyword">null</span>;</div><div class="line">	<span class="comment">//静态工厂方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (single == <span class="keyword">null</span>) &#123;</div><div class="line">			single = <span class="keyword">new</span> Singleton();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> single;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Singleton通过将构造方法限定为private避免了类在外部被实例化，在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问。<br>（事实上，通过Java反射机制是能够实例化构造方法为private的类的，那基本上会使所有的Java单例实现失效。此问题在此处不做讨论，姑且掩耳盗铃地认为反射机制不存在。）</p>
+<p>但是以上懒汉式单例的实现没有考虑线程安全问题，它是线程不安全的，并发环境下很可能出现多个Singleton实例，要实现线程安全，有以下三种方式，都是对getInstance这个方法改造，保证了懒汉式单例的线程安全，如果你第一次接触单例模式，对线程安全不是很了解，可以先跳过下面这三小条，去看饿汉式单例，等看完后面再回头考虑线程安全的问题。</p>
+<h2 id="在getInstance方法上加同步"><a href="#在getInstance方法上加同步" class="headerlink" title="在getInstance方法上加同步"></a>在getInstance方法上加同步</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Singleton;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> yxx</div><div class="line"> * 懒汉式单例类，在第一次调用的时候实例化自己</div><div class="line"> * 在getInstance方法上加同步</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonSynchronized</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingletonSynchronized</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonSynchronized single = <span class="keyword">null</span>;</div><div class="line">	<span class="comment">//静态工厂方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingletonSynchronized <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (single == <span class="keyword">null</span>) &#123;</div><div class="line">			single = <span class="keyword">new</span> SingletonSynchronized();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> single;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="双重检查锁定"><a href="#双重检查锁定" class="headerlink" title="双重检查锁定"></a>双重检查锁定</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Singleton;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> yxx</div><div class="line"> * 懒汉式单例类，在第一次调用的时候实例化自己</div><div class="line"> * 双重检查锁定</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDoubleChecked</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">SingletonDoubleChecked</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SingletonDoubleChecked single = <span class="keyword">null</span>;</div><div class="line">	<span class="comment">//静态工厂方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDoubleChecked <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (single == <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">synchronized</span> (SingletonDoubleChecked.class) &#123;</div><div class="line">				<span class="keyword">if</span> (single == <span class="keyword">null</span>) &#123;</div><div class="line">					single = <span class="keyword">new</span> SingletonDoubleChecked();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> single;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="静态内部类，既实现了线程安全，又避免了同步带来的性能影响"><a href="#静态内部类，既实现了线程安全，又避免了同步带来的性能影响" class="headerlink" title="静态内部类，既实现了线程安全，又避免了同步带来的性能影响"></a>静态内部类，既实现了线程安全，又避免了同步带来的性能影响</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Singleton;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> yxx</div><div class="line"> * 懒汉式单例类，在第一次调用的时候实例化自己</div><div class="line"> * 既实现了线程安全，又避免了同步带来的性能影响</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonStatic</span> </span>&#123;    </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyHolder</span> </span>&#123;    </div><div class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonStatic INSTANCE = <span class="keyword">new</span> SingletonStatic();    </div><div class="line">    &#125;    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonStatic</span> <span class="params">()</span></span>&#123;&#125;    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonStatic <span class="title">getInstance</span><span class="params">()</span> </span>&#123;    </div><div class="line">       <span class="keyword">return</span> LazyHolder.INSTANCE;    </div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="饿汉式单例模式"><a href="#饿汉式单例模式" class="headerlink" title="饿汉式单例模式"></a>饿汉式单例模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Singleton;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@author</span> yxx</div><div class="line"> * 饿汉式单例类，在类初始化时，已经自行实例化</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton2</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton2</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton2 single = <span class="keyword">new</span> Singleton2();</div><div class="line"></div><div class="line">	<span class="comment">// 静态工厂方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton2 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> single;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>饿汉式在类创建的同时就已经创建好一个静态的对象供系统使用，以后不再改变，所以天生是线程安全的。</p>
+<p>登记式单例实际上维护了一组单例类的实例，将这些实例存放在一个Map（登记薄）中，对于已经登记过的实例，则从Map直接返回，对于没有登记的，则先登记，然后返回。 </p>
+<p>这里我对登记式单例标记了可忽略，我的理解来说，首先它用的比较少，另外其实内部实现还是用的饿汉式单例，因为其中的static方法块，它的单例在类被装载的时候就被实例化了。</p>
+<h1 id="饿汉式和懒汉式区别"><a href="#饿汉式和懒汉式区别" class="headerlink" title="饿汉式和懒汉式区别"></a>饿汉式和懒汉式区别</h1><p>从名字上来说，饿汉和懒汉，饿汉就是类一旦加载，就把单例初始化完成，保证getInstance的时候，单例是已经存在的了，而懒汉比较懒，只有当调用getInstance的时候，才回去初始化这个单例。另外从以下两点再区分以下这两种方式：<br>1、线程安全：<br>饿汉式天生就是线程安全的，可以直接用于多线程而不会出现问题，懒汉式本身是非线程安全的，为了实现线程安全有几种写法，分别是上面的1、2、3，这三种实现在资源加载和性能方面有些区别。<br>2、资源加载和性能：<br>饿汉式在类创建的同时就实例化一个静态对象出来，不管之后会不会使用这个单例，都会占据一定的内存，但是相应的，在第一次调用时速度也会更快，因为其资源已经初始化完成，而懒汉式顾名思义，会延迟加载，在第一次使用该单例的时候才会实例化对象出来，第一次调用时要做初始化，如果要做的工作比较多，性能上会有些延迟，之后就和饿汉式一样了。</p>
+<p>至于1、2、3这三种实现又有些区别，<br>第1种，在方法调用上加了同步，虽然线程安全了，但是每次都要同步，会影响性能，毕竟99%的情况下是不需要同步的，<br>第2种，在getInstance中做了两次null检查，确保了只有第一次调用单例的时候才会做同步，这样也是线程安全的，同时避免了每次都同步的性能损耗<br>第3种，利用了classloader的机制来保证初始化instance时只有一个线程，所以也是线程安全的，同时没有性能损耗，所以一般我倾向于使用这一种。</p>
+<h1 id="什么是线程安全？"><a href="#什么是线程安全？" class="headerlink" title="什么是线程安全？"></a>什么是线程安全？</h1><p>如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。或者说：一个类或者程序所提供的接口对于线程来说是原子操作，或者多个线程之间的切换不会导致该接口的执行结果存在二义性,也就是说我们不用考虑同步的问题，那就是线程安全的。</p>
+<h1 id="单例模式的优点"><a href="#单例模式的优点" class="headerlink" title="单例模式的优点"></a>单例模式的优点</h1><ul>
+<li>单例类的唯一实例由单例类本身控制，所以可以很好地控制用户何时访问它。</li>
+</ul>
+<h1 id="适用单例模式的情景"><a href="#适用单例模式的情景" class="headerlink" title="适用单例模式的情景"></a>适用单例模式的情景</h1><ul>
+<li>当系统需要某个类只能有一个实例。</li>
+</ul>
+<h1 id="下载源码请到"><a href="#下载源码请到" class="headerlink" title="下载源码请到"></a>下载源码请到</h1><p><a href="https://github.com/androidwolf" target="_blank" rel="external">MyGitHub</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/09/19/Java设计模式--单例模式/">Java设计模式--单例模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yxx 的个人博客">yxx</a></p>
+        <p><span>发布时间:</span>2016年09月19日 - 09时01分</p>
+        <p><span>最后更新:</span>2016年09月19日 - 18时44分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/19/Java设计模式--单例模式/" title="Java设计模式--单例模式">http://yoursite.com/2016/09/19/Java设计模式--单例模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/09/19/Java设计模式--单例模式/　　作者: yxx" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/09/19/Java设计模式--原型模式/">
+                    Java设计模式--原型模式
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/17/Java设计模式--组合模式/">
+                    Java设计模式--组合模式
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单例模式"><span class="toc-number">1.</span> <span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Singleton-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Singleton Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类图"><span class="toc-number">3.</span> <span class="toc-text">类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模式的结构与使用"><span class="toc-number">4.</span> <span class="toc-text">模式的结构与使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种："><span class="toc-number">5.</span> <span class="toc-text">java中单例模式是一种常见的设计模式，单例模式的写法有好几种，这里主要介绍三种：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单的例子"><span class="toc-number">6.</span> <span class="toc-text">简单的例子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#懒汉式单例-java"><span class="toc-number">6.1.</span> <span class="toc-text">懒汉式单例.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在getInstance方法上加同步"><span class="toc-number">6.2.</span> <span class="toc-text">在getInstance方法上加同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双重检查锁定"><span class="toc-number">6.3.</span> <span class="toc-text">双重检查锁定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态内部类，既实现了线程安全，又避免了同步带来的性能影响"><span class="toc-number">6.4.</span> <span class="toc-text">静态内部类，既实现了线程安全，又避免了同步带来的性能影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#饿汉式单例模式"><span class="toc-number">6.5.</span> <span class="toc-text">饿汉式单例模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#饿汉式和懒汉式区别"><span class="toc-number">7.</span> <span class="toc-text">饿汉式和懒汉式区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是线程安全？"><span class="toc-number">8.</span> <span class="toc-text">什么是线程安全？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单例模式的优点"><span class="toc-number">9.</span> <span class="toc-text">单例模式的优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用单例模式的情景"><span class="toc-number">10.</span> <span class="toc-text">适用单例模式的情景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载源码请到"><span class="toc-number">11.</span> <span class="toc-text">下载源码请到</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/09/19/Java设计模式--原型模式/" title="上一篇: Java设计模式--原型模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/09/17/Java设计模式--组合模式/" title="下一篇: Java设计模式--组合模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/设计模式总结/">Java设计模式--总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Java设计模式--命令模式/">Java设计模式--命令模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Java设计模式--外观模式/">Java设计模式--外观模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/25/Java设计模式--中介者模式/">Java设计模式--中介者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/24/Java设计模式--生成器模式/">Java设计模式--生成器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/23/Java设计模式--策略模式/">Java设计模式--策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/19/Java设计模式--原型模式/">Java设计模式--原型模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/19/Java设计模式--单例模式/">Java设计模式--单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--组合模式/">Java设计模式--组合模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--桥接模式/">Java设计模式--桥接模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--模板方法模式/">Java设计模式--模板方法模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/17/Java设计模式--代理模式/">Java设计模式--代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/16/Java设计模式--访问者模式/">Java设计模式--访问者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/14/Java设计模式--解释器模式/">Java设计模式--解释器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--备忘录模式/">Java设计模式--备忘录模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/Java设计模式--享元模式/">Java设计模式--享元模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--状态模式/">Java设计模式--状态模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/Java设计模式--责任链模式/">Java设计模式--责任链模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/Java设计模式--适配器模式/">Java设计模式--适配器模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--观察者模式/">Java设计模式--观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/08/Java设计模式--装饰模式/">Java设计模式--装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/07/Java设计模式--抽象工厂模式/">Java设计模式--抽象工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/06/Java设计模式--工厂模式/">Java设计模式--工厂模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/04/CSDN--Me/">CSDN--杜鲁门的博客</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+            var yiliaConfig = {
+            fancybox: true,
+            mathjax: true,
+            animate: true,
+            isHome: false,
+            isPost: true,
+            isArchive: false,
+            isTag: false,
+            isCategory: false,
+            open_in_new: false
+            }
+        </script>
+        
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 yxx
+            </div>
+            <div class="footer-right">
+                <a href="https://androidwolf.github.io/" target="_blank" title="叶显秀的Github">yxx@版权所有，翻版绝对不究</a>
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
